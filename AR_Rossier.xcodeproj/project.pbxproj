@@ -15,6 +15,7 @@
 		1E39C1ED1C654916004C1B04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E39C1EB1C654916004C1B04 /* LaunchScreen.storyboard */; };
 		1E39C1F81C654917004C1B04 /* AR_RossierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E39C1F71C654917004C1B04 /* AR_RossierTests.m */; };
 		1E39C2031C654917004C1B04 /* AR_RossierUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E39C2021C654917004C1B04 /* AR_RossierUITests.m */; };
+		1E8223151C6912D900682473 /* TriggerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8223141C6912D900682473 /* TriggerTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		1E39C1FE1C654917004C1B04 /* AR_RossierUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AR_RossierUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E39C2021C654917004C1B04 /* AR_RossierUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AR_RossierUITests.m; sourceTree = "<group>"; };
 		1E39C2041C654917004C1B04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E8223131C6912D900682473 /* TriggerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriggerTableViewController.h; sourceTree = "<group>"; };
+		1E8223141C6912D900682473 /* TriggerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriggerTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,8 @@
 			children = (
 				1E39C1E01C654916004C1B04 /* AppDelegate.h */,
 				1E39C1E11C654916004C1B04 /* AppDelegate.m */,
+				1E8223131C6912D900682473 /* TriggerTableViewController.h */,
+				1E8223141C6912D900682473 /* TriggerTableViewController.m */,
 				1E39C1E31C654916004C1B04 /* ViewController.h */,
 				1E39C1E41C654916004C1B04 /* ViewController.m */,
 				1E39C1E61C654916004C1B04 /* Main.storyboard */,
@@ -272,6 +277,7 @@
 			files = (
 				1E39C1E51C654916004C1B04 /* ViewController.m in Sources */,
 				1E39C1E21C654916004C1B04 /* AppDelegate.m in Sources */,
+				1E8223151C6912D900682473 /* TriggerTableViewController.m in Sources */,
 				1E39C1DF1C654916004C1B04 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +504,7 @@
 				1E39C2091C654917004C1B04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1E39C20A1C654917004C1B04 /* Build configuration list for PBXNativeTarget "AR_RossierTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +513,7 @@
 				1E39C20C1C654917004C1B04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1E39C20D1C654917004C1B04 /* Build configuration list for PBXNativeTarget "AR_RossierUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +522,7 @@
 				1E39C20F1C654917004C1B04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
