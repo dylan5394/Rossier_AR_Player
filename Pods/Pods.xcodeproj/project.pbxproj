@@ -1,0 +1,887 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		075979D6A80AA907E8C15434C532C221 /* FAuthData.h in Headers */ = {isa = PBXBuildFile; fileRef = E76CCD64E332F2EABA40A5C4EE9DDE0D /* FAuthData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D84A7CA7F8B1A52808078A0A9514AAF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C49D928448B31FB9A7D5AE5C8D6C4E /* Foundation.framework */; };
+		29F5152F9C52E0FC94054EB41A15E62C /* Pods-AR_RossierTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EF300B08D4E84932A0B677DB2D5C47B /* Pods-AR_RossierTests-dummy.m */; };
+		36BC6C9C555EE07C6697C2A4356E34D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C49D928448B31FB9A7D5AE5C8D6C4E /* Foundation.framework */; };
+		3D9C6D8D9075C09C12E53E0D5B06F15E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F85758B54CB0D843A3E97DFFB2F21F /* CFNetwork.framework */; };
+		3FD61871A384128BD423ECB516B54AC8 /* FEventType.h in Headers */ = {isa = PBXBuildFile; fileRef = 108111B31E2B7CA05B7A860F0388D06A /* FEventType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6A1B1829F5A55FB2979D58FB8F957AD7 /* FirebaseApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BFCB9C6BBD6C9C2DEE7712665E13F5E /* FirebaseApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6EE911B933800447253BC3935A13E65E /* FDataSnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B747AAA957094839646C107E5EC6AF6 /* FDataSnapshot.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		71DF67850774658371D1DFD4DF5186E7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6204446BD9150A17B12E81B4A6F9CA8 /* Security.framework */; };
+		77005025784B00A1625C94FB1C40B0A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C49D928448B31FB9A7D5AE5C8D6C4E /* Foundation.framework */; };
+		83126EA3B5E960F9A9C155CE3DACB9FB /* FConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FE7E702E7AC5AFECA79123AA8C2EFB3 /* FConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84754CB255B272AFEFE1ECF132DE7E93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C49D928448B31FB9A7D5AE5C8D6C4E /* Foundation.framework */; };
+		8A8B2E7318F9A52B0C8DCF4991BD88E5 /* Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4700B2C2CB6EB73C6F9B25D1A01D2A /* Empty.m */; };
+		8F4F6C91327C6D43B7C6A83EBDC6184B /* FirebaseServerValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CB16EF542A064FE3DB6EFDD4C0556DC /* FirebaseServerValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9BA94D71A271F1ACBDED92AFEA04350D /* Pods-AR_RossierUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 85E5ED105C567DB8033CD1F31FF74F43 /* Pods-AR_RossierUITests-dummy.m */; };
+		A5035EDCA2C178ABAC6CBF1C82D0C649 /* FMutableData.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1C90CCC0760BCFAC531C700A6E7DFC /* FMutableData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7B41E32FB4ADB6C44FB3797B9BB77AE /* Firebase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 374CA361FA7DB1CAA43F26F0E2541AEE /* Firebase-dummy.m */; };
+		B89A4308CD40B0011195C7D370B4D8EF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6166BE40C18BC6BF0EED92CAB212EC33 /* SystemConfiguration.framework */; };
+		C8C87A31C7903E0D5E72FD65FC8F7F57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C49D928448B31FB9A7D5AE5C8D6C4E /* Foundation.framework */; };
+		C9B2789B5C77981D226512D3AFA94AC2 /* Firebase.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C33475FA87825EFCD65613194F6FA38 /* Firebase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D29D86661B99C954E8301C4157961A40 /* FTransactionResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A18188BEFAB4827853CEE6F40E66B2E /* FTransactionResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DC1826E519DD076923A39D173B8F4658 /* Pods-AR_Rossier-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 910C51B7ED0E6D509664DCB4DCBA3DC6 /* Pods-AR_Rossier-dummy.m */; };
+		F06664877754422D6FB53A1D8E4FE448 /* FAuthType.h in Headers */ = {isa = PBXBuildFile; fileRef = A7265D2CBEFF58E4C7368DACDB2E7577 /* FAuthType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F7408836F66643B863D2EAF8FDB25212 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F11103765A90B2488E2D61FD950DDA /* Pods-dummy.m */; };
+		FC18554D24943F3FEEBC7222C7FD8D10 /* FQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = E667D3010F069F88D46D0CB17A580BC0 /* FQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0B536CFF4C6F7AE3EBA94F409C9B94AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 569735B422E0E4CEEFC5C6955AFDE3A5;
+			remoteInfo = Firebase;
+		};
+		34C54789CC72D4F4B89B3C1BD01F07F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 569735B422E0E4CEEFC5C6955AFDE3A5;
+			remoteInfo = Firebase;
+		};
+		82DFA5A8C59D49FF3982FBFBD7AE944A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 569735B422E0E4CEEFC5C6955AFDE3A5;
+			remoteInfo = Firebase;
+		};
+		8F4FF473CBF409A937A8E84E2C049037 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 569735B422E0E4CEEFC5C6955AFDE3A5;
+			remoteInfo = Firebase;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0191D3D99CCDA273A1777C0CCBA5B4DC /* Firebase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Firebase-prefix.pch"; sourceTree = "<group>"; };
+		07CBA98EC7822919F41D1D94F3E4B51C /* MSManualScannerSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MSManualScannerSession.h; path = "moodstocks-ios-sdk-4.1.6/Moodstocks.framework/Versions/A/Headers/MSManualScannerSession.h"; sourceTree = "<group>"; };
+		08C6E42B40635E9246E31E3BA0E1ECF9 /* MSResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MSResult.h; path = "moodstocks-ios-sdk-4.1.6/Moodstocks.framework/Versions/A/Headers/MSResult.h"; sourceTree = "<group>"; };
+		0C33475FA87825EFCD65613194F6FA38 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
+		0C8264FA4ADA0D62EC6CE9E02A0DF610 /* Pods-AR_Rossier-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AR_Rossier-frameworks.sh"; sourceTree = "<group>"; };
+		108111B31E2B7CA05B7A860F0388D06A /* FEventType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FEventType.h; sourceTree = "<group>"; };
+		11B8075A6567A2A1186499B2D1C86BFC /* Moodstocks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moodstocks.framework; path = "moodstocks-ios-sdk-4.1.6/Moodstocks.framework"; sourceTree = "<group>"; };
+		1927C6D6A987FD0516D0153BECC87658 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1BA415BAB169146C6E4EE3D44A052FB7 /* Pods-AR_RossierUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AR_RossierUITests-frameworks.sh"; sourceTree = "<group>"; };
+		1CB16EF542A064FE3DB6EFDD4C0556DC /* FirebaseServerValue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FirebaseServerValue.h; sourceTree = "<group>"; };
+		1FE7E702E7AC5AFECA79123AA8C2EFB3 /* FConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FConfig.h; sourceTree = "<group>"; };
+		2097D0762F72BC6ED86FEF9997237248 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		27088871EE4E26AA945D044038D7BE2B /* libFirebase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFirebase.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A18188BEFAB4827853CEE6F40E66B2E /* FTransactionResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FTransactionResult.h; sourceTree = "<group>"; };
+		2B474A2E9783CF6C927CE3B496536AB6 /* Pods-AR_RossierTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AR_RossierTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2EAF4AD883930F7ED12FC7BE6D0B13A2 /* MSSync.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MSSync.h; path = "moodstocks-ios-sdk-4.1.6/Moodstocks.framework/Versions/A/Headers/MSSync.h"; sourceTree = "<group>"; };
+		30EC3C9F74234FDFF8CA7C569F1EED68 /* Pods-AR_RossierUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AR_RossierUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		374CA361FA7DB1CAA43F26F0E2541AEE /* Firebase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Firebase-dummy.m"; sourceTree = "<group>"; };
+		42AF282F23427A7C59F0ECDF74D86125 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		42E9CDFD94C5BBFD76BDE8DFFE55430A /* Pods-AR_RossierUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AR_RossierUITests.release.xcconfig"; sourceTree = "<group>"; };
+		45D0C97B8128628A5B8CD39AC1F352EC /* Pods-AR_Rossier-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AR_Rossier-acknowledgements.plist"; sourceTree = "<group>"; };
+		469EA7411F50F83EFC006A6FD263886E /* MSAutoScannerSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MSAutoScannerSession.h; path = "moodstocks-ios-sdk-4.1.6/Moodstocks.framework/Versions/A/Headers/MSAutoScannerSession.h"; sourceTree = "<group>"; };
+		489126C2BEBD83BBF9EBFEB9D30CD2E6 /* libFirebaseStatic.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = libFirebaseStatic.a; sourceTree = "<group>"; };
+		4B747AAA957094839646C107E5EC6AF6 /* FDataSnapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FDataSnapshot.h; sourceTree = "<group>"; };
+		4C1C90CCC0760BCFAC531C700A6E7DFC /* FMutableData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FMutableData.h; sourceTree = "<group>"; };
+		53F11103765A90B2488E2D61FD950DDA /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		59C0B1A7784308D61E12EB54FC6B0325 /* Pods-AR_RossierUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AR_RossierUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		59E2C4AB143F13FB2DDAF6B5E01032F8 /* Pods-AR_Rossier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AR_Rossier.release.xcconfig"; sourceTree = "<group>"; };
+		5BFCB9C6BBD6C9C2DEE7712665E13F5E /* FirebaseApp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FirebaseApp.h; sourceTree = "<group>"; };
+		5EF300B08D4E84932A0B677DB2D5C47B /* Pods-AR_RossierTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AR_RossierTests-dummy.m"; sourceTree = "<group>"; };
+		60F85758B54CB0D843A3E97DFFB2F21F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		6166BE40C18BC6BF0EED92CAB212EC33 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		638D270A02932A19E42687C85846BABD /* libPods-AR_RossierUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AR_RossierUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FDC94774C031FDDC22C223DD4168085 /* MSDebug.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MSDebug.h; path = "moodstocks-ios-sdk-4.1.6/Moodstocks.framework/Versions/A/Headers/MSDebug.h"; sourceTree = "<group>"; };
+		77C49D928448B31FB9A7D5AE5C8D6C4E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		785EA4D5951A9FBB91DD2EA1EB202C20 /* Pods-AR_RossierUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AR_RossierUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		787E861F35B51773DAE585F352FF58B4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		7DF271B6487FAA88A2B931E11F3F69B4 /* libPods-AR_Rossier.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AR_Rossier.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F2111FD1E53284D0C64DF0129DAAA27 /* Pods-AR_Rossier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AR_Rossier.debug.xcconfig"; sourceTree = "<group>"; };
+		7F38D4ECDBE90CDE0DD19F0187926D8D /* Pods-AR_RossierUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AR_RossierUITests-resources.sh"; sourceTree = "<group>"; };
+		85E5ED105C567DB8033CD1F31FF74F43 /* Pods-AR_RossierUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AR_RossierUITests-dummy.m"; sourceTree = "<group>"; };
+		910C51B7ED0E6D509664DCB4DCBA3DC6 /* Pods-AR_Rossier-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AR_Rossier-dummy.m"; sourceTree = "<group>"; };
+		91F15A897E7808D782CD93676D349D7B /* Pods-AR_RossierTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AR_RossierTests-resources.sh"; sourceTree = "<group>"; };
+		9421CDF7BE788497FB406129B1516793 /* Pods-AR_Rossier-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AR_Rossier-acknowledgements.markdown"; sourceTree = "<group>"; };
+		94B850863FB97CA59EACE19A9BA91B09 /* MSImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MSImage.h; path = "moodstocks-ios-sdk-4.1.6/Moodstocks.framework/Versions/A/Headers/MSImage.h"; sourceTree = "<group>"; };
+		9917C9CAB56D019905849088E4B51683 /* MSScanner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MSScanner.h; path = "moodstocks-ios-sdk-4.1.6/Moodstocks.framework/Versions/A/Headers/MSScanner.h"; sourceTree = "<group>"; };
+		A0C5BCC4A7A7D7F3964F120EBDC47094 /* Pods-AR_Rossier-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AR_Rossier-resources.sh"; sourceTree = "<group>"; };
+		A7265D2CBEFF58E4C7368DACDB2E7577 /* FAuthType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FAuthType.h; sourceTree = "<group>"; };
+		A7FF602040C187114DB56DD3C16183AF /* Pods-AR_RossierTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AR_RossierTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		AF968BE77F07746A786282AD40F615B9 /* MSApiSearch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MSApiSearch.h; path = "moodstocks-ios-sdk-4.1.6/Moodstocks.framework/Versions/A/Headers/MSApiSearch.h"; sourceTree = "<group>"; };
+		B34A6388622D9B0BA4B110BB51A0491E /* Moodstocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Moodstocks.h; path = "moodstocks-ios-sdk-4.1.6/Moodstocks.framework/Versions/A/Headers/Moodstocks.h"; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C6204446BD9150A17B12E81B4A6F9CA8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		CB1EB98B61A1C7F29A07647D07CE8564 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		D01462D31478F8C334849D75772CD960 /* Pods-AR_RossierTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AR_RossierTests-frameworks.sh"; sourceTree = "<group>"; };
+		E667D3010F069F88D46D0CB17A580BC0 /* FQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FQuery.h; sourceTree = "<group>"; };
+		E76CCD64E332F2EABA40A5C4EE9DDE0D /* FAuthData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FAuthData.h; sourceTree = "<group>"; };
+		E801D0EFC251B8ED8332FA2DC468521E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBE135C33D6FCBE4998AB90EA1EB41C5 /* Firebase.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Firebase.xcconfig; sourceTree = "<group>"; };
+		ECA19BD41B4A89A41ACC9B250F5C9C20 /* libPods-AR_RossierTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AR_RossierTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED10CE5DA975D4B39522B7BBA8A495F3 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
+		F159A623A99AECD42CDCB6239EEF94D2 /* NSError+Moodstocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSError+Moodstocks.h"; path = "moodstocks-ios-sdk-4.1.6/Moodstocks.framework/Versions/A/Headers/NSError+Moodstocks.h"; sourceTree = "<group>"; };
+		F4A39B440748396EFEAA36504FDFCFBF /* Pods-AR_RossierTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AR_RossierTests.release.xcconfig"; sourceTree = "<group>"; };
+		FA4700B2C2CB6EB73C6F9B25D1A01D2A /* Empty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Empty.m; sourceTree = "<group>"; };
+		FFBEED21BB4100CA1B04D27D33610006 /* Pods-AR_RossierTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AR_RossierTests-acknowledgements.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		517AD8D3904844B971845D1995E200D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D9C6D8D9075C09C12E53E0D5B06F15E /* CFNetwork.framework in Frameworks */,
+				84754CB255B272AFEFE1ECF132DE7E93 /* Foundation.framework in Frameworks */,
+				71DF67850774658371D1DFD4DF5186E7 /* Security.framework in Frameworks */,
+				B89A4308CD40B0011195C7D370B4D8EF /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9207E452CF6E23E027634C62E9B7CFAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77005025784B00A1625C94FB1C40B0A6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9345AFF763A53AA6AADA9BFFE3E3F9D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8C87A31C7903E0D5E72FD65FC8F7F57 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F684DFEB479D42C881E636E665DEBB3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36BC6C9C555EE07C6697C2A4356E34D2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFBE123FEBBC5B1C365927162B814FE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D84A7CA7F8B1A52808078A0A9514AAF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F708DBB96F9A309B24103A31D671B58 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				FA4700B2C2CB6EB73C6F9B25D1A01D2A /* Empty.m */,
+				E76CCD64E332F2EABA40A5C4EE9DDE0D /* FAuthData.h */,
+				A7265D2CBEFF58E4C7368DACDB2E7577 /* FAuthType.h */,
+				1FE7E702E7AC5AFECA79123AA8C2EFB3 /* FConfig.h */,
+				4B747AAA957094839646C107E5EC6AF6 /* FDataSnapshot.h */,
+				108111B31E2B7CA05B7A860F0388D06A /* FEventType.h */,
+				0C33475FA87825EFCD65613194F6FA38 /* Firebase.h */,
+				5BFCB9C6BBD6C9C2DEE7712665E13F5E /* FirebaseApp.h */,
+				1CB16EF542A064FE3DB6EFDD4C0556DC /* FirebaseServerValue.h */,
+				4C1C90CCC0760BCFAC531C700A6E7DFC /* FMutableData.h */,
+				E667D3010F069F88D46D0CB17A580BC0 /* FQuery.h */,
+				2A18188BEFAB4827853CEE6F40E66B2E /* FTransactionResult.h */,
+				3A62D41E7ACAEB90BCF616AF5A179A6A /* Frameworks */,
+				662940B2216E35BAFA0F92C953EF85A5 /* Support Files */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		0FD9D3F224E0420AABD77220F3769A3D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27088871EE4E26AA945D044038D7BE2B /* libFirebase.a */,
+				E801D0EFC251B8ED8332FA2DC468521E /* libPods.a */,
+				7DF271B6487FAA88A2B931E11F3F69B4 /* libPods-AR_Rossier.a */,
+				ECA19BD41B4A89A41ACC9B250F5C9C20 /* libPods-AR_RossierTests.a */,
+				638D270A02932A19E42687C85846BABD /* libPods-AR_RossierUITests.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				843A690C4A272ACCFA5202DC4499C74E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A62D41E7ACAEB90BCF616AF5A179A6A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				489126C2BEBD83BBF9EBFEB9D30CD2E6 /* libFirebaseStatic.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		662940B2216E35BAFA0F92C953EF85A5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EBE135C33D6FCBE4998AB90EA1EB41C5 /* Firebase.xcconfig */,
+				374CA361FA7DB1CAA43F26F0E2541AEE /* Firebase-dummy.m */,
+				0191D3D99CCDA273A1777C0CCBA5B4DC /* Firebase-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Firebase";
+			sourceTree = "<group>";
+		};
+		6A25AA5F6FE7E145F27E196BA8CBCA8E /* Pods-AR_Rossier */ = {
+			isa = PBXGroup;
+			children = (
+				9421CDF7BE788497FB406129B1516793 /* Pods-AR_Rossier-acknowledgements.markdown */,
+				45D0C97B8128628A5B8CD39AC1F352EC /* Pods-AR_Rossier-acknowledgements.plist */,
+				910C51B7ED0E6D509664DCB4DCBA3DC6 /* Pods-AR_Rossier-dummy.m */,
+				0C8264FA4ADA0D62EC6CE9E02A0DF610 /* Pods-AR_Rossier-frameworks.sh */,
+				A0C5BCC4A7A7D7F3964F120EBDC47094 /* Pods-AR_Rossier-resources.sh */,
+				7F2111FD1E53284D0C64DF0129DAAA27 /* Pods-AR_Rossier.debug.xcconfig */,
+				59E2C4AB143F13FB2DDAF6B5E01032F8 /* Pods-AR_Rossier.release.xcconfig */,
+			);
+			name = "Pods-AR_Rossier";
+			path = "Target Support Files/Pods-AR_Rossier";
+			sourceTree = "<group>";
+		};
+		7C8D91034BEB341809D6B5E41BDA595E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0F708DBB96F9A309B24103A31D671B58 /* Firebase */,
+				FFF3286D15A69A14C2DE27D1D04DED11 /* Moodstocks-iOS-SDK */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
+				7C8D91034BEB341809D6B5E41BDA595E /* Pods */,
+				0FD9D3F224E0420AABD77220F3769A3D /* Products */,
+				DA9ED3BFDDCAF03AA818403B4BF7476D /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		843A690C4A272ACCFA5202DC4499C74E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				60F85758B54CB0D843A3E97DFFB2F21F /* CFNetwork.framework */,
+				77C49D928448B31FB9A7D5AE5C8D6C4E /* Foundation.framework */,
+				C6204446BD9150A17B12E81B4A6F9CA8 /* Security.framework */,
+				6166BE40C18BC6BF0EED92CAB212EC33 /* SystemConfiguration.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		8B6387E450855C9DFBFFCC7AFCBAF01B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				11B8075A6567A2A1186499B2D1C86BFC /* Moodstocks.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A8B398A3109FA1B3CB571117D835DFF /* Pods-AR_RossierTests */ = {
+			isa = PBXGroup;
+			children = (
+				A7FF602040C187114DB56DD3C16183AF /* Pods-AR_RossierTests-acknowledgements.markdown */,
+				FFBEED21BB4100CA1B04D27D33610006 /* Pods-AR_RossierTests-acknowledgements.plist */,
+				5EF300B08D4E84932A0B677DB2D5C47B /* Pods-AR_RossierTests-dummy.m */,
+				D01462D31478F8C334849D75772CD960 /* Pods-AR_RossierTests-frameworks.sh */,
+				91F15A897E7808D782CD93676D349D7B /* Pods-AR_RossierTests-resources.sh */,
+				2B474A2E9783CF6C927CE3B496536AB6 /* Pods-AR_RossierTests.debug.xcconfig */,
+				F4A39B440748396EFEAA36504FDFCFBF /* Pods-AR_RossierTests.release.xcconfig */,
+			);
+			name = "Pods-AR_RossierTests";
+			path = "Target Support Files/Pods-AR_RossierTests";
+			sourceTree = "<group>";
+		};
+		AE837356E5A0FCAB20F29FB79462192A /* Pods-AR_RossierUITests */ = {
+			isa = PBXGroup;
+			children = (
+				59C0B1A7784308D61E12EB54FC6B0325 /* Pods-AR_RossierUITests-acknowledgements.markdown */,
+				785EA4D5951A9FBB91DD2EA1EB202C20 /* Pods-AR_RossierUITests-acknowledgements.plist */,
+				85E5ED105C567DB8033CD1F31FF74F43 /* Pods-AR_RossierUITests-dummy.m */,
+				1BA415BAB169146C6E4EE3D44A052FB7 /* Pods-AR_RossierUITests-frameworks.sh */,
+				7F38D4ECDBE90CDE0DD19F0187926D8D /* Pods-AR_RossierUITests-resources.sh */,
+				30EC3C9F74234FDFF8CA7C569F1EED68 /* Pods-AR_RossierUITests.debug.xcconfig */,
+				42E9CDFD94C5BBFD76BDE8DFFE55430A /* Pods-AR_RossierUITests.release.xcconfig */,
+			);
+			name = "Pods-AR_RossierUITests";
+			path = "Target Support Files/Pods-AR_RossierUITests";
+			sourceTree = "<group>";
+		};
+		DA9ED3BFDDCAF03AA818403B4BF7476D /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EE4B4C6545A49F7A38E72D2CDEF699AF /* Pods */,
+				6A25AA5F6FE7E145F27E196BA8CBCA8E /* Pods-AR_Rossier */,
+				9A8B398A3109FA1B3CB571117D835DFF /* Pods-AR_RossierTests */,
+				AE837356E5A0FCAB20F29FB79462192A /* Pods-AR_RossierUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		EE4B4C6545A49F7A38E72D2CDEF699AF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1927C6D6A987FD0516D0153BECC87658 /* Pods-acknowledgements.markdown */,
+				2097D0762F72BC6ED86FEF9997237248 /* Pods-acknowledgements.plist */,
+				53F11103765A90B2488E2D61FD950DDA /* Pods-dummy.m */,
+				ED10CE5DA975D4B39522B7BBA8A495F3 /* Pods-frameworks.sh */,
+				42AF282F23427A7C59F0ECDF74D86125 /* Pods-resources.sh */,
+				787E861F35B51773DAE585F352FF58B4 /* Pods.debug.xcconfig */,
+				CB1EB98B61A1C7F29A07647D07CE8564 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			path = "Target Support Files/Pods";
+			sourceTree = "<group>";
+		};
+		FFF3286D15A69A14C2DE27D1D04DED11 /* Moodstocks-iOS-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				B34A6388622D9B0BA4B110BB51A0491E /* Moodstocks.h */,
+				AF968BE77F07746A786282AD40F615B9 /* MSApiSearch.h */,
+				469EA7411F50F83EFC006A6FD263886E /* MSAutoScannerSession.h */,
+				6FDC94774C031FDDC22C223DD4168085 /* MSDebug.h */,
+				94B850863FB97CA59EACE19A9BA91B09 /* MSImage.h */,
+				07CBA98EC7822919F41D1D94F3E4B51C /* MSManualScannerSession.h */,
+				08C6E42B40635E9246E31E3BA0E1ECF9 /* MSResult.h */,
+				9917C9CAB56D019905849088E4B51683 /* MSScanner.h */,
+				2EAF4AD883930F7ED12FC7BE6D0B13A2 /* MSSync.h */,
+				F159A623A99AECD42CDCB6239EEF94D2 /* NSError+Moodstocks.h */,
+				8B6387E450855C9DFBFFCC7AFCBAF01B /* Frameworks */,
+			);
+			path = "Moodstocks-iOS-SDK";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		11B07EDA26BA9DAE2415B87999509E89 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				075979D6A80AA907E8C15434C532C221 /* FAuthData.h in Headers */,
+				F06664877754422D6FB53A1D8E4FE448 /* FAuthType.h in Headers */,
+				83126EA3B5E960F9A9C155CE3DACB9FB /* FConfig.h in Headers */,
+				6EE911B933800447253BC3935A13E65E /* FDataSnapshot.h in Headers */,
+				3FD61871A384128BD423ECB516B54AC8 /* FEventType.h in Headers */,
+				C9B2789B5C77981D226512D3AFA94AC2 /* Firebase.h in Headers */,
+				6A1B1829F5A55FB2979D58FB8F957AD7 /* FirebaseApp.h in Headers */,
+				8F4F6C91327C6D43B7C6A83EBDC6184B /* FirebaseServerValue.h in Headers */,
+				A5035EDCA2C178ABAC6CBF1C82D0C649 /* FMutableData.h in Headers */,
+				FC18554D24943F3FEEBC7222C7FD8D10 /* FQuery.h in Headers */,
+				D29D86661B99C954E8301C4157961A40 /* FTransactionResult.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2B300B8E690177669B8A8DAB1D080557 /* Pods-AR_RossierTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AD54A5694EAECF43E55922DD030ECE7 /* Build configuration list for PBXNativeTarget "Pods-AR_RossierTests" */;
+			buildPhases = (
+				624E961BDB9E14198D9F34A1D1845E6E /* Sources */,
+				9345AFF763A53AA6AADA9BFFE3E3F9D7 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				813832AD1F6456C582FD702197E86CFC /* PBXTargetDependency */,
+			);
+			name = "Pods-AR_RossierTests";
+			productName = "Pods-AR_RossierTests";
+			productReference = ECA19BD41B4A89A41ACC9B250F5C9C20 /* libPods-AR_RossierTests.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		569735B422E0E4CEEFC5C6955AFDE3A5 /* Firebase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 048D8D02C9F5F6B4FAB719C7488039B1 /* Build configuration list for PBXNativeTarget "Firebase" */;
+			buildPhases = (
+				4FDE5E0B37287615FB2FA4693FF4F294 /* Sources */,
+				517AD8D3904844B971845D1995E200D7 /* Frameworks */,
+				11B07EDA26BA9DAE2415B87999509E89 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Firebase;
+			productName = Firebase;
+			productReference = 27088871EE4E26AA945D044038D7BE2B /* libFirebase.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C06900910C3A6326D437273407CBB0AC /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2FACDB0EB98EF65951FE5029F457133 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				E1A7FE99412EB31A29CA7247276EB81A /* Sources */,
+				9F684DFEB479D42C881E636E665DEBB3 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E78C8846F3E6598AABC36FE85CA05335 /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = E801D0EFC251B8ED8332FA2DC468521E /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		CC02EEB3199C07C434D693B7F66B8B8D /* Pods-AR_Rossier */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE3F1A84979E40CE1B226BA867DFEAFF /* Build configuration list for PBXNativeTarget "Pods-AR_Rossier" */;
+			buildPhases = (
+				A2F22B3593E409B27AFFFF9E78606D90 /* Sources */,
+				BFBE123FEBBC5B1C365927162B814FE5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				215BDF18FF4058BD690D97A30435A9BC /* PBXTargetDependency */,
+			);
+			name = "Pods-AR_Rossier";
+			productName = "Pods-AR_Rossier";
+			productReference = 7DF271B6487FAA88A2B931E11F3F69B4 /* libPods-AR_Rossier.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		F832571A9ABCC97AC7D26CA6B23DA502 /* Pods-AR_RossierUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE14256FA36E0AA1C3374EBCA5A935C6 /* Build configuration list for PBXNativeTarget "Pods-AR_RossierUITests" */;
+			buildPhases = (
+				759250AF1F0D37646946416EF7F72D36 /* Sources */,
+				9207E452CF6E23E027634C62E9B7CFAD /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4ECA34FA9BA5869217E933CCF16FFC5 /* PBXTargetDependency */,
+			);
+			name = "Pods-AR_RossierUITests";
+			productName = "Pods-AR_RossierUITests";
+			productReference = 638D270A02932A19E42687C85846BABD /* libPods-AR_RossierUITests.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 0FD9D3F224E0420AABD77220F3769A3D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				569735B422E0E4CEEFC5C6955AFDE3A5 /* Firebase */,
+				C06900910C3A6326D437273407CBB0AC /* Pods */,
+				CC02EEB3199C07C434D693B7F66B8B8D /* Pods-AR_Rossier */,
+				2B300B8E690177669B8A8DAB1D080557 /* Pods-AR_RossierTests */,
+				F832571A9ABCC97AC7D26CA6B23DA502 /* Pods-AR_RossierUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4FDE5E0B37287615FB2FA4693FF4F294 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A8B2E7318F9A52B0C8DCF4991BD88E5 /* Empty.m in Sources */,
+				B7B41E32FB4ADB6C44FB3797B9BB77AE /* Firebase-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		624E961BDB9E14198D9F34A1D1845E6E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29F5152F9C52E0FC94054EB41A15E62C /* Pods-AR_RossierTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		759250AF1F0D37646946416EF7F72D36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BA94D71A271F1ACBDED92AFEA04350D /* Pods-AR_RossierUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2F22B3593E409B27AFFFF9E78606D90 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC1826E519DD076923A39D173B8F4658 /* Pods-AR_Rossier-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1A7FE99412EB31A29CA7247276EB81A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7408836F66643B863D2EAF8FDB25212 /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		215BDF18FF4058BD690D97A30435A9BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Firebase;
+			target = 569735B422E0E4CEEFC5C6955AFDE3A5 /* Firebase */;
+			targetProxy = 0B536CFF4C6F7AE3EBA94F409C9B94AE /* PBXContainerItemProxy */;
+		};
+		813832AD1F6456C582FD702197E86CFC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Firebase;
+			target = 569735B422E0E4CEEFC5C6955AFDE3A5 /* Firebase */;
+			targetProxy = 8F4FF473CBF409A937A8E84E2C049037 /* PBXContainerItemProxy */;
+		};
+		E78C8846F3E6598AABC36FE85CA05335 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Firebase;
+			target = 569735B422E0E4CEEFC5C6955AFDE3A5 /* Firebase */;
+			targetProxy = 34C54789CC72D4F4B89B3C1BD01F07F0 /* PBXContainerItemProxy */;
+		};
+		F4ECA34FA9BA5869217E933CCF16FFC5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Firebase;
+			target = 569735B422E0E4CEEFC5C6955AFDE3A5 /* Firebase */;
+			targetProxy = 82DFA5A8C59D49FF3982FBFBD7AE944A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		07777AE5C4A432CC15C13F28AD2D5A45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59E2C4AB143F13FB2DDAF6B5E01032F8 /* Pods-AR_Rossier.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		0CFE04B140D2A1A14573B5166D309F71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B474A2E9783CF6C927CE3B496536AB6 /* Pods-AR_RossierTests.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		4114690B791A43811E3560051D6BF531 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBE135C33D6FCBE4998AB90EA1EB41C5 /* Firebase.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Firebase/Firebase-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		52E67F7716B68E0C0C61E9CBBFE67A48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB1EB98B61A1C7F29A07647D07CE8564 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		53556B16166731B1DE8AEA40A43BE350 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F2111FD1E53284D0C64DF0129DAAA27 /* Pods-AR_Rossier.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8256C1EC5F4920AB0DB7101806CB70B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4A39B440748396EFEAA36504FDFCFBF /* Pods-AR_RossierTests.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		8D1534490D941DCA47C62AC4314182AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		9D517CF872F6A5E7E3A3A0746E43D626 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42E9CDFD94C5BBFD76BDE8DFFE55430A /* Pods-AR_RossierUITests.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		A0FE379714B13FB20F891CD121CFAFB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30EC3C9F74234FDFF8CA7C569F1EED68 /* Pods-AR_RossierUITests.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B62757473F159FC5117DA60ED2AD7669 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBE135C33D6FCBE4998AB90EA1EB41C5 /* Firebase.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Firebase/Firebase-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C5A18280E9321A9268D1C80B7DA43967 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F4ACB3B431B037915356E636B08C3037 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 787E861F35B51773DAE585F352FF58B4 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		048D8D02C9F5F6B4FAB719C7488039B1 /* Build configuration list for PBXNativeTarget "Firebase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B62757473F159FC5117DA60ED2AD7669 /* Debug */,
+				4114690B791A43811E3560051D6BF531 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D1534490D941DCA47C62AC4314182AF /* Debug */,
+				C5A18280E9321A9268D1C80B7DA43967 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AD54A5694EAECF43E55922DD030ECE7 /* Build configuration list for PBXNativeTarget "Pods-AR_RossierTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CFE04B140D2A1A14573B5166D309F71 /* Debug */,
+				8256C1EC5F4920AB0DB7101806CB70B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE14256FA36E0AA1C3374EBCA5A935C6 /* Build configuration list for PBXNativeTarget "Pods-AR_RossierUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0FE379714B13FB20F891CD121CFAFB0 /* Debug */,
+				9D517CF872F6A5E7E3A3A0746E43D626 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2FACDB0EB98EF65951FE5029F457133 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4ACB3B431B037915356E636B08C3037 /* Debug */,
+				52E67F7716B68E0C0C61E9CBBFE67A48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE3F1A84979E40CE1B226BA867DFEAFF /* Build configuration list for PBXNativeTarget "Pods-AR_Rossier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53556B16166731B1DE8AEA40A43BE350 /* Debug */,
+				07777AE5C4A432CC15C13F28AD2D5A45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
