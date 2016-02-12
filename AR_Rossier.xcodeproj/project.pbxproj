@@ -16,6 +16,7 @@
 		1E39C2031C654917004C1B04 /* AR_RossierUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E39C2021C654917004C1B04 /* AR_RossierUITests.m */; };
 		1E8223151C6912D900682473 /* TriggerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8223141C6912D900682473 /* TriggerTableViewController.m */; };
 		611C0ACA1C6E8B2200546DA5 /* ImageRecognitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 611C0AC91C6E8B2200546DA5 /* ImageRecognitionViewController.m */; };
+		611C0ACD1C6E997D00546DA5 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 611C0ACC1C6E997D00546DA5 /* SignUpViewController.m */; };
 		6176DC281C69157E0053F231 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6176DC271C69157E0053F231 /* LoginViewController.m */; };
 		659D8DCA124D41100A56445C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CE23F0C0260C5FF7FB79D7 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,8 @@
 		39CE23F0C0260C5FF7FB79D7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		611C0AC81C6E8B2200546DA5 /* ImageRecognitionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageRecognitionViewController.h; sourceTree = "<group>"; };
 		611C0AC91C6E8B2200546DA5 /* ImageRecognitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageRecognitionViewController.m; sourceTree = "<group>"; };
+		611C0ACB1C6E997D00546DA5 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		611C0ACC1C6E997D00546DA5 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		6176DC261C69157E0053F231 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		6176DC271C69157E0053F231 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B105C5A5AE3C559AA4BD7D84 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +119,8 @@
 			children = (
 				1E39C1E01C654916004C1B04 /* AppDelegate.h */,
 				1E39C1E11C654916004C1B04 /* AppDelegate.m */,
+				611C0ACB1C6E997D00546DA5 /* SignUpViewController.h */,
+				611C0ACC1C6E997D00546DA5 /* SignUpViewController.m */,
 				6176DC261C69157E0053F231 /* LoginViewController.h */,
 				6176DC271C69157E0053F231 /* LoginViewController.m */,
 				611C0AC81C6E8B2200546DA5 /* ImageRecognitionViewController.h */,
@@ -358,6 +363,7 @@
 			files = (
 				6176DC281C69157E0053F231 /* LoginViewController.m in Sources */,
 				1E39C1E21C654916004C1B04 /* AppDelegate.m in Sources */,
+				611C0ACD1C6E997D00546DA5 /* SignUpViewController.m in Sources */,
 				611C0ACA1C6E8B2200546DA5 /* ImageRecognitionViewController.m in Sources */,
 				1E8223151C6912D900682473 /* TriggerTableViewController.m in Sources */,
 				1E39C1DF1C654916004C1B04 /* main.m in Sources */,
