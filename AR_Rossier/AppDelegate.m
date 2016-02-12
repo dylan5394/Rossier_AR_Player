@@ -6,7 +6,12 @@
 //  Copyright © 2016 AR_Rossier. All rights reserved.
 //
 
+#import "ImageRecognitionViewController.h"
 #import "AppDelegate.h"
+#import <Moodstocks/Moodstocks.h>
+
+#define MS_API_KEY    @"85qwth1qw8xr7sc89wph"
+#define MS_API_SECRET @"QTQtOUrILbGaQ85n"
 
 @interface AppDelegate ()
 
@@ -17,6 +22,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    NSString *path = [MSScanner cachesPathFor:@"scanner.db"];
+    _scanner = [[MSScanner alloc] init];
+    [_scanner openWithPath:path key:MS_API_KEY secret:MS_API_SECRET error:nil];
+    
+    void (^completionBlock)(MSSync *, NSError *) = ^(MSSync *op, NSError *error) {
+        if (error)
+            NSLog(@"Sync failed with error: %@", [error ms_message]);
+        else
+            NSLog(@"Sync succeeded (%li images(s))", (long)[_scanner count:nil]);
+    };
+    
+    void (^progressionBlock)(NSInteger) = ^(NSInteger percent) {
+        NSLog(@"Sync progressing: %li%%", (long)percent);
+    };
+    
+    // Launch the synchronization
+    [_scanner syncInBackgroundWithBlock:completionBlock progressBlock:progressionBlock];
+    
+    /*
     BOOL isLoggedIn = false;
     
     NSString *storyboardId = isLoggedIn ? @"mainVC" : @"loginVC";
@@ -28,6 +53,8 @@
     UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:storyboardId];
     self.window.rootViewController = initViewController;
     [self.window makeKeyAndVisible];
+    
+    */
     
     return YES;
 }
@@ -52,6 +79,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [_scanner close:nil];
 }
 
 @end
