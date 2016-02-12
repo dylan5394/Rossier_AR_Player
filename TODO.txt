@@ -1,0 +1,5 @@
+TODO:
+
+get moodstocks working
+start adding triggers to the database
+work on UX/constraints
