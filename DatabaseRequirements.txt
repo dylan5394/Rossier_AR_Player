@@ -1,0 +1,11 @@
+DATABASE:
+
+User - array
+	email - string
+	classes - array
+	password - string
+	created triggers - array
+		tags
+		image
+		name
+	

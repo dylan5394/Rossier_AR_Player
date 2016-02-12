@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		1E39C1DF1C654916004C1B04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E39C1DE1C654916004C1B04 /* main.m */; };
 		1E39C1E21C654916004C1B04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E39C1E11C654916004C1B04 /* AppDelegate.m */; };
-		1E39C1E51C654916004C1B04 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E39C1E41C654916004C1B04 /* ViewController.m */; };
 		1E39C1E81C654916004C1B04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E39C1E61C654916004C1B04 /* Main.storyboard */; };
 		1E39C1EA1C654916004C1B04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E39C1E91C654916004C1B04 /* Assets.xcassets */; };
 		1E39C1ED1C654916004C1B04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E39C1EB1C654916004C1B04 /* LaunchScreen.storyboard */; };
 		1E39C1F81C654917004C1B04 /* AR_RossierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E39C1F71C654917004C1B04 /* AR_RossierTests.m */; };
 		1E39C2031C654917004C1B04 /* AR_RossierUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E39C2021C654917004C1B04 /* AR_RossierUITests.m */; };
 		1E8223151C6912D900682473 /* TriggerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8223141C6912D900682473 /* TriggerTableViewController.m */; };
+		6176DC281C69157E0053F231 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6176DC271C69157E0053F231 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +40,6 @@
 		1E39C1DE1C654916004C1B04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1E39C1E01C654916004C1B04 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1E39C1E11C654916004C1B04 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1E39C1E31C654916004C1B04 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1E39C1E41C654916004C1B04 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1E39C1E71C654916004C1B04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1E39C1E91C654916004C1B04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E39C1EC1C654916004C1B04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +52,8 @@
 		1E39C2041C654917004C1B04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E8223131C6912D900682473 /* TriggerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriggerTableViewController.h; sourceTree = "<group>"; };
 		1E8223141C6912D900682473 /* TriggerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriggerTableViewController.m; sourceTree = "<group>"; };
+		6176DC261C69157E0053F231 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		6176DC271C69157E0053F231 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,10 +106,10 @@
 			children = (
 				1E39C1E01C654916004C1B04 /* AppDelegate.h */,
 				1E39C1E11C654916004C1B04 /* AppDelegate.m */,
+				6176DC261C69157E0053F231 /* LoginViewController.h */,
+				6176DC271C69157E0053F231 /* LoginViewController.m */,
 				1E8223131C6912D900682473 /* TriggerTableViewController.h */,
 				1E8223141C6912D900682473 /* TriggerTableViewController.m */,
-				1E39C1E31C654916004C1B04 /* ViewController.h */,
-				1E39C1E41C654916004C1B04 /* ViewController.m */,
 				1E39C1E61C654916004C1B04 /* Main.storyboard */,
 				1E39C1E91C654916004C1B04 /* Assets.xcassets */,
 				1E39C1EB1C654916004C1B04 /* LaunchScreen.storyboard */,
@@ -275,7 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E39C1E51C654916004C1B04 /* ViewController.m in Sources */,
+				6176DC281C69157E0053F231 /* LoginViewController.m in Sources */,
 				1E39C1E21C654916004C1B04 /* AppDelegate.m in Sources */,
 				1E8223151C6912D900682473 /* TriggerTableViewController.m in Sources */,
 				1E39C1DF1C654916004C1B04 /* main.m in Sources */,
