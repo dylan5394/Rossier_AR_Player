@@ -70,6 +70,7 @@ MSResultTypeEAN13;
 
 - (void)session:(id)scannerSession didFindResult:(MSResult *)result
 {
+    /*
     NSString *title = [result type] == MSResultTypeImage ? @"Image" : @"Barcode";
     NSString *message = [NSString stringWithFormat:@"%@:\n%@", title, [result string]];
     UIActionSheet *aSheet = [[UIActionSheet alloc] initWithTitle:message
@@ -78,6 +79,8 @@ MSResultTypeEAN13;
                                           destructiveButtonTitle:nil
                                                otherButtonTitles:nil];
     [aSheet showInView:self.view];
+     */
+    [self performSegueWithIdentifier:@"imageFound" sender:self];
 }
 
 - (void)updateInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

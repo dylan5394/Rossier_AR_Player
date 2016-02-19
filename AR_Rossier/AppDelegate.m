@@ -41,7 +41,6 @@
     // Launch the synchronization
     [_scanner syncInBackgroundWithBlock:completionBlock progressBlock:progressionBlock];
     
-    /*
     BOOL isLoggedIn = false;
     
     NSString *storyboardId = isLoggedIn ? @"mainVC" : @"loginVC";
@@ -53,8 +52,6 @@
     UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:storyboardId];
     self.window.rootViewController = initViewController;
     [self.window makeKeyAndVisible];
-    
-    */
     
     return YES;
 }

@@ -17,6 +17,8 @@
 		1E8223151C6912D900682473 /* TriggerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8223141C6912D900682473 /* TriggerTableViewController.m */; };
 		611C0ACA1C6E8B2200546DA5 /* ImageRecognitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 611C0AC91C6E8B2200546DA5 /* ImageRecognitionViewController.m */; };
 		611C0ACD1C6E997D00546DA5 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 611C0ACC1C6E997D00546DA5 /* SignUpViewController.m */; };
+		61737D5B1C77C4620031FF97 /* AddTriggerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61737D5A1C77C4620031FF97 /* AddTriggerViewController.m */; };
+		61737D5E1C77DC0B0031FF97 /* TriggerContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61737D5D1C77DC0B0031FF97 /* TriggerContentViewController.m */; };
 		6176DC281C69157E0053F231 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6176DC271C69157E0053F231 /* LoginViewController.m */; };
 		659D8DCA124D41100A56445C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CE23F0C0260C5FF7FB79D7 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -60,6 +62,10 @@
 		611C0AC91C6E8B2200546DA5 /* ImageRecognitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageRecognitionViewController.m; sourceTree = "<group>"; };
 		611C0ACB1C6E997D00546DA5 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		611C0ACC1C6E997D00546DA5 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		61737D591C77C4620031FF97 /* AddTriggerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTriggerViewController.h; sourceTree = "<group>"; };
+		61737D5A1C77C4620031FF97 /* AddTriggerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTriggerViewController.m; sourceTree = "<group>"; };
+		61737D5C1C77DC0B0031FF97 /* TriggerContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriggerContentViewController.h; sourceTree = "<group>"; };
+		61737D5D1C77DC0B0031FF97 /* TriggerContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriggerContentViewController.m; sourceTree = "<group>"; };
 		6176DC261C69157E0053F231 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		6176DC271C69157E0053F231 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B105C5A5AE3C559AA4BD7D84 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,16 +123,10 @@
 		1E39C1DC1C654916004C1B04 /* AR_Rossier */ = {
 			isa = PBXGroup;
 			children = (
+				61737D581C77C4300031FF97 /* TabVCs */,
+				61737D571C77C4220031FF97 /* LoginVCs */,
 				1E39C1E01C654916004C1B04 /* AppDelegate.h */,
 				1E39C1E11C654916004C1B04 /* AppDelegate.m */,
-				611C0ACB1C6E997D00546DA5 /* SignUpViewController.h */,
-				611C0ACC1C6E997D00546DA5 /* SignUpViewController.m */,
-				6176DC261C69157E0053F231 /* LoginViewController.h */,
-				6176DC271C69157E0053F231 /* LoginViewController.m */,
-				611C0AC81C6E8B2200546DA5 /* ImageRecognitionViewController.h */,
-				611C0AC91C6E8B2200546DA5 /* ImageRecognitionViewController.m */,
-				1E8223131C6912D900682473 /* TriggerTableViewController.h */,
-				1E8223141C6912D900682473 /* TriggerTableViewController.m */,
 				1E39C1E61C654916004C1B04 /* Main.storyboard */,
 				1E39C1E91C654916004C1B04 /* Assets.xcassets */,
 				1E39C1EB1C654916004C1B04 /* LaunchScreen.storyboard */,
@@ -177,6 +177,32 @@
 				39CE23F0C0260C5FF7FB79D7 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61737D571C77C4220031FF97 /* LoginVCs */ = {
+			isa = PBXGroup;
+			children = (
+				611C0ACB1C6E997D00546DA5 /* SignUpViewController.h */,
+				611C0ACC1C6E997D00546DA5 /* SignUpViewController.m */,
+				6176DC261C69157E0053F231 /* LoginViewController.h */,
+				6176DC271C69157E0053F231 /* LoginViewController.m */,
+			);
+			name = LoginVCs;
+			sourceTree = "<group>";
+		};
+		61737D581C77C4300031FF97 /* TabVCs */ = {
+			isa = PBXGroup;
+			children = (
+				611C0AC81C6E8B2200546DA5 /* ImageRecognitionViewController.h */,
+				611C0AC91C6E8B2200546DA5 /* ImageRecognitionViewController.m */,
+				1E8223131C6912D900682473 /* TriggerTableViewController.h */,
+				1E8223141C6912D900682473 /* TriggerTableViewController.m */,
+				61737D591C77C4620031FF97 /* AddTriggerViewController.h */,
+				61737D5A1C77C4620031FF97 /* AddTriggerViewController.m */,
+				61737D5C1C77DC0B0031FF97 /* TriggerContentViewController.h */,
+				61737D5D1C77DC0B0031FF97 /* TriggerContentViewController.m */,
+			);
+			name = TabVCs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,9 +390,11 @@
 				6176DC281C69157E0053F231 /* LoginViewController.m in Sources */,
 				1E39C1E21C654916004C1B04 /* AppDelegate.m in Sources */,
 				611C0ACD1C6E997D00546DA5 /* SignUpViewController.m in Sources */,
+				61737D5B1C77C4620031FF97 /* AddTriggerViewController.m in Sources */,
 				611C0ACA1C6E8B2200546DA5 /* ImageRecognitionViewController.m in Sources */,
 				1E8223151C6912D900682473 /* TriggerTableViewController.m in Sources */,
 				1E39C1DF1C654916004C1B04 /* main.m in Sources */,
+				61737D5E1C77DC0B0031FF97 /* TriggerContentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
