@@ -10,6 +10,8 @@
 #import "LoginViewController.h"
 
 @interface LoginViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
 
 @end
 
@@ -18,6 +20,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(hideKeyBoard)];
+    
+    [self.view addGestureRecognizer:tapGesture];
+}
+
+-(void)hideKeyBoard {
+    
+    if(self.emailField.isFirstResponder) {
+        [self.emailField resignFirstResponder];
+    }
+    else if(self.passwordField.isFirstResponder) {
+        [self.passwordField resignFirstResponder];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -52,6 +52,12 @@ MSResultTypeEAN13;
     [_scannerSession stopRunning];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [_scannerSession resumeProcessing];
+}
+
 - (void)viewWillLayoutSubviews
 {
     [self updateInterfaceOrientation:self.interfaceOrientation];
@@ -110,11 +116,12 @@ MSResultTypeEAN13;
     }
 }
 
-
+/*
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [_scannerSession resumeProcessing];
 }
+ */
 
 /*
 #pragma mark - Navigation

@@ -48,8 +48,6 @@ didFailLoadWithError:(nullable NSError *)error {
         
         [self.webView stopLoading];
     }
-    
-    //self.webView.delegate = nil;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
