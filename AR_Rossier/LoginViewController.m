@@ -15,11 +15,16 @@
 
 @end
 
-@implementation LoginViewController
+@implementation LoginViewController{
+    
+    Firebase * _firebaseDB;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    AppDelegate *temp = [[UIApplication sharedApplication]delegate];
+    _firebaseDB = temp.firebaseDB;
     
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
                                            initWithTarget:self
@@ -45,9 +50,25 @@
 
 - (IBAction)LoginButtonTapped:(id)sender {
     
-    AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
-    
-    appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+    [_firebaseDB authUser:self.emailField.text password:self.passwordField.text withCompletionBlock:^(NSError *error, FAuthData *authData) {
+            if (error) {
+                // There was an error logging in to this account
+                NSLog(@"There was in error logging in");
+                
+                //We should add text (using UILabel most likely) to the view that says incorrect username or password
+            
+            } else {
+                // We are now logged in
+                NSLog(@"Login was successful");
+                
+                AppDelegate * temp = [[UIApplication sharedApplication] delegate];
+                temp.expirationToken = authData.expires;
+                
+                AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+                
+                appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+            }
+    }];
 }
 
 /*

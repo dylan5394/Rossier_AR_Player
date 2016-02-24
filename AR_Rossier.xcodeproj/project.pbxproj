@@ -17,6 +17,7 @@
 		1E8223151C6912D900682473 /* TriggerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8223141C6912D900682473 /* TriggerTableViewController.m */; };
 		611C0ACA1C6E8B2200546DA5 /* ImageRecognitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 611C0AC91C6E8B2200546DA5 /* ImageRecognitionViewController.m */; };
 		611C0ACD1C6E997D00546DA5 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 611C0ACC1C6E997D00546DA5 /* SignUpViewController.m */; };
+		616553AD1C790491000D7553 /* images.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 616553AC1C790491000D7553 /* images.bundle */; };
 		61737D5B1C77C4620031FF97 /* AddTriggerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61737D5A1C77C4620031FF97 /* AddTriggerViewController.m */; };
 		61737D5E1C77DC0B0031FF97 /* TriggerContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61737D5D1C77DC0B0031FF97 /* TriggerContentViewController.m */; };
 		6176DC281C69157E0053F231 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6176DC271C69157E0053F231 /* LoginViewController.m */; };
@@ -62,6 +63,7 @@
 		611C0AC91C6E8B2200546DA5 /* ImageRecognitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageRecognitionViewController.m; sourceTree = "<group>"; };
 		611C0ACB1C6E997D00546DA5 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		611C0ACC1C6E997D00546DA5 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		616553AC1C790491000D7553 /* images.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = images.bundle; sourceTree = "<group>"; };
 		61737D591C77C4620031FF97 /* AddTriggerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTriggerViewController.h; sourceTree = "<group>"; };
 		61737D5A1C77C4620031FF97 /* AddTriggerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTriggerViewController.m; sourceTree = "<group>"; };
 		61737D5C1C77DC0B0031FF97 /* TriggerContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriggerContentViewController.h; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				1E39C1E01C654916004C1B04 /* AppDelegate.h */,
 				1E39C1E11C654916004C1B04 /* AppDelegate.m */,
 				1E39C1E61C654916004C1B04 /* Main.storyboard */,
+				616553AC1C790491000D7553 /* images.bundle */,
 				1E39C1E91C654916004C1B04 /* Assets.xcassets */,
 				1E39C1EB1C654916004C1B04 /* LaunchScreen.storyboard */,
 				1E39C1EE1C654916004C1B04 /* Info.plist */,
@@ -315,6 +318,7 @@
 				1E39C1ED1C654916004C1B04 /* LaunchScreen.storyboard in Resources */,
 				1E39C1EA1C654916004C1B04 /* Assets.xcassets in Resources */,
 				1E39C1E81C654916004C1B04 /* Main.storyboard in Resources */,
+				616553AD1C790491000D7553 /* images.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

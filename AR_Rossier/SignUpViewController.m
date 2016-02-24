@@ -11,6 +11,7 @@
 #import <Firebase/Firebase.h>
 
 @interface SignUpViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
@@ -26,9 +27,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _firebaseDB = [[Firebase alloc] initWithUrl:@"https://usc-rossier-ar.firebaseio.com"];
+    AppDelegate *temp = [[UIApplication sharedApplication]delegate];
+    _firebaseDB = temp.firebaseDB;
     // Write data to Firebase
-    [_firebaseDB setValue:@"Do you have data? You'll love Firebase."];
+    //[_firebaseDB setValue:@"Viewed the signup screen."];
+    
     
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
                                            initWithTarget:self
@@ -52,9 +55,20 @@
 
 - (IBAction)signUpTapped:(id)sender {
     
-    AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
-    
-    appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+    //need to add error checking for email and password field
+    [_firebaseDB createUser:self.emailField.text password:self.passwordField.text withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
+     if (error) {
+         // There was an error creating the account
+         NSLog(@"There was an error creating the account");
+     } else {
+         NSString *uid = [result objectForKey:@"uid"];
+         NSLog(@"Successfully created user account with uid: %@", uid);
+         
+         AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+         
+         appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+     }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

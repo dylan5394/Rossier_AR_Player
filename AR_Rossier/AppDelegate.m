@@ -23,6 +23,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    self.firebaseDB = [[Firebase alloc] initWithUrl:@"https://usc-rossier-ar.firebaseio.com"];
+    
     NSString *path = [MSScanner cachesPathFor:@"scanner.db"];
     _scanner = [[MSScanner alloc] init];
     [_scanner openWithPath:path key:MS_API_KEY secret:MS_API_SECRET error:nil];
@@ -40,6 +42,15 @@
     
     // Launch the synchronization
     [_scanner syncInBackgroundWithBlock:completionBlock progressBlock:progressionBlock];
+    
+    /* Here we could check a custom auth token that we would need to persist to the app's documents folder when the app will terminate
+    [self.firebaseDB authWithCustomToken:AUTH_TOKEN withCompletionBlock:^(NSError *error, FAuthData *authData) {
+        if (error) {
+            NSLog(@"Login Failed! %@", error);
+        } else {
+            NSLog(@"Login succeeded! %@", authData);
+        }
+    }];*/
     
     BOOL isLoggedIn = false;
     
@@ -68,6 +79,27 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    FAuthData * authData = [self.firebaseDB authData];
+    if (authData) {
+        NSLog(@"Authenticated user with uid: %@", authData.uid);
+    }
+    else {
+        
+        NSLog(@"The token has expired, must login again");
+        //make them login again
+        BOOL isLoggedIn = false;
+        
+        NSString *storyboardId = isLoggedIn ? @"mainVC" : @"loginVC";
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        
+        
+        UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:storyboardId];
+        self.window.rootViewController = initViewController;
+        [self.window makeKeyAndVisible];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -77,6 +109,8 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [_scanner close:nil];
+    
+    //should persist the auth token to the documents folder of this app here
 }
 
 @end
