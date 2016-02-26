@@ -6,10 +6,14 @@
 //  Copyright © 2016 AR_Rossier. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "SignUpViewController.h"
 #import <Firebase/Firebase.h>
 
 @interface SignUpViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
 
 @end
 
@@ -25,6 +29,32 @@
     _firebaseDB = [[Firebase alloc] initWithUrl:@"https://usc-rossier-ar.firebaseio.com"];
     // Write data to Firebase
     [_firebaseDB setValue:@"Do you have data? You'll love Firebase."];
+    
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(hideKeyBoard)];
+    
+    [self.view addGestureRecognizer:tapGesture];
+}
+
+-(void)hideKeyBoard {
+    
+    if(self.emailField.isFirstResponder) {
+        [self.emailField resignFirstResponder];
+    }
+    else if(self.passwordField.isFirstResponder) {
+        [self.passwordField resignFirstResponder];
+    }
+    else if(self.nameField.isFirstResponder) {
+        [self.nameField resignFirstResponder];
+    }
+}
+
+- (IBAction)signUpTapped:(id)sender {
+    
+    AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+    
+    appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
 }
 
 - (void)didReceiveMemoryWarning {
