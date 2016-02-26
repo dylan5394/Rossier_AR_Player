@@ -758,6 +758,9 @@
                                         <include reference="0MT-73-IY7"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="addTriggerButtonTapped:" destination="Ts8-jv-h7d" eventType="touchUpInside" id="esp-El-APK"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Enter description here." minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="kwH-P5-tR3" userLabel="description">
                                 <rect key="frame" x="41" y="304" width="518" height="30"/>
