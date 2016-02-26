@@ -11,6 +11,8 @@
 #import "AddTriggerViewController.h"
 
 @interface AddTriggerViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *linkTextField;
+@property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
@@ -117,16 +119,19 @@
     
     //We cannot store extra images in an alternate database. Moodstocks only lets you load images from their database
     //So the below code is invalid for now
-    /*
+
     UIImage * uploadImage = self.imageView.image;
     NSData * imageData = UIImagePNGRepresentation(uploadImage);
     NSString * base64String = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    
     NSMutableDictionary * quoteString = [[NSMutableDictionary alloc] init];
     [quoteString setValue:base64String forKey:@"string"];
+    [quoteString setValue:self.linkTextField.text forKey:@"media_link"];
+    [quoteString setValue:self.descriptionTextField.text forKey:@"description"];
+     
     Firebase * usersRef = [_firebaseDB childByAppendingPath:@"images"];
     NSDictionary * users = [[NSDictionary alloc] initWithObjectsAndKeys:quoteString,@"image", nil];
     [usersRef setValue:users];
-     */
     
     
     [self dismissViewControllerAnimated:NO completion:nil];
