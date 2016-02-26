@@ -9,11 +9,10 @@
 #import "AppDelegate.h"
 #import "ImageRecognitionViewController.h"
 
-static int kMSResultTypes = MSResultTypeImage  |
-MSResultTypeQRCode |
-MSResultTypeEAN13;
+static int kMSResultTypes = MSResultTypeImage | MSResultTypeQRCode | MSResultTypeEAN13;
 
 @interface ImageRecognitionViewController () <MSAutoScannerSessionDelegate, UIActionSheetDelegate>
+
 @property (weak, nonatomic) IBOutlet UIView *videoPreview;
 
 @end

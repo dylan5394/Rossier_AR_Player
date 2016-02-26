@@ -6,6 +6,8 @@
 //  Copyright © 2016 AR_Rossier. All rights reserved.
 //
 
+#import "AppDelegate.h"
+#import <Firebase/Firebase.h>
 #import "AddTriggerViewController.h"
 
 @interface AddTriggerViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -15,11 +17,17 @@
 
 @end
 
-@implementation AddTriggerViewController
+@implementation AddTriggerViewController {
+    
+    Firebase * _firebaseDB;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    AppDelegate *temp = [[UIApplication sharedApplication]delegate];
+    _firebaseDB = temp.firebaseDB;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -100,6 +108,26 @@
 }
 
 - (IBAction)cancelButtonTapped:(id)sender {
+    
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+- (IBAction)addTriggerButtonTapped:(id)sender {
+    
+    
+    //We cannot store extra images in an alternate database. Moodstocks only lets you load images from their database
+    //So the below code is invalid for now
+    /*
+    UIImage * uploadImage = self.imageView.image;
+    NSData * imageData = UIImagePNGRepresentation(uploadImage);
+    NSString * base64String = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    NSMutableDictionary * quoteString = [[NSMutableDictionary alloc] init];
+    [quoteString setValue:base64String forKey:@"string"];
+    Firebase * usersRef = [_firebaseDB childByAppendingPath:@"images"];
+    NSDictionary * users = [[NSDictionary alloc] initWithObjectsAndKeys:quoteString,@"image", nil];
+    [usersRef setValue:users];
+     */
+    
     
     [self dismissViewControllerAnimated:NO completion:nil];
 }

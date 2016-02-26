@@ -13,7 +13,13 @@
 #define MS_API_KEY    @"85qwth1qw8xr7sc89wph"
 #define MS_API_SECRET @"QTQtOUrILbGaQ85n"
 
+NSString * const kToken = @"token";
+
 @interface AppDelegate ()
+
+@property (strong,nonatomic) NSString * filePath;
+@property (strong, nonatomic) NSMutableArray * info;
+@property BOOL isLoggedIn;
 
 @end
 
@@ -23,8 +29,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    //sync with the moodstocks database and load the images in that database into our scanner
     self.firebaseDB = [[Firebase alloc] initWithUrl:@"https://usc-rossier-ar.firebaseio.com"];
-    
     NSString *path = [MSScanner cachesPathFor:@"scanner.db"];
     _scanner = [[MSScanner alloc] init];
     [_scanner openWithPath:path key:MS_API_KEY secret:MS_API_SECRET error:nil];
@@ -43,26 +49,72 @@
     // Launch the synchronization
     [_scanner syncInBackgroundWithBlock:completionBlock progressBlock:progressionBlock];
     
-    /* Here we could check a custom auth token that we would need to persist to the app's documents folder when the app will terminate
-    [self.firebaseDB authWithCustomToken:AUTH_TOKEN withCompletionBlock:^(NSError *error, FAuthData *authData) {
-        if (error) {
-            NSLog(@"Login Failed! %@", error);
-        } else {
-            NSLog(@"Login succeeded! %@", authData);
-        }
-    }];*/
+    //we also need to import a bundle file with image data to bypass moodstocks database size limitations
+    /*
+     
+     
+     
+     
+    code for importing bundle should go here -- bundle should get image data from an alternate database
+     
+     
+     */
     
-    BOOL isLoggedIn = false;
+    //Read from the token storage file
+    NSLog(@"Checking token.plist file for an auth token");
+    NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString * documentsDirectory = [paths objectAtIndex:0];
+    NSLog(@"%@", documentsDirectory);
+    self.filePath = [documentsDirectory stringByAppendingPathComponent:@"Token.plist"];
+    self.info = [NSMutableArray arrayWithContentsOfFile:self.filePath];
     
-    NSString *storyboardId = isLoggedIn ? @"mainVC" : @"loginVC";
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.isLoggedIn = false;
     
-    
-    UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:storyboardId];
-    self.window.rootViewController = initViewController;
-    [self.window makeKeyAndVisible];
+    //check to see if a token exists, try to authenticate it if it does
+    if(self.info && self.info.count == 1) {
+        [self.firebaseDB authWithCustomToken:[self.info[0] valueForKey:kToken] withCompletionBlock:^(NSError *error, FAuthData *authData) {
+            if (error) {
+                
+                NSLog(@"Login Failed, sending user to the loginVC! %@", error);
+                NSString *storyboardId = self.isLoggedIn ? @"mainVC" : @"loginVC";
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                
+                self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+                
+                
+                UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:storyboardId];
+                self.window.rootViewController = initViewController;
+                [self.window makeKeyAndVisible];
+            } else {
+                
+                NSLog(@"Login succeeded, sending the user straight to the mainVC! %@", authData);
+                self.isLoggedIn = true;
+                NSString *storyboardId = self.isLoggedIn ? @"mainVC" : @"loginVC";
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                
+                self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+                
+                
+                UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:storyboardId];
+                self.window.rootViewController = initViewController;
+                [self.window makeKeyAndVisible];
+            }
+        }];
+    }
+    else {
+        
+        NSLog(@"There was no token found for this user");
+        NSString *storyboardId = self.isLoggedIn ? @"mainVC" : @"loginVC";
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        
+        
+        UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:storyboardId];
+        self.window.rootViewController = initViewController;
+        [self.window makeKeyAndVisible];
+    }
     
     return YES;
 }
@@ -85,17 +137,13 @@
         NSLog(@"Authenticated user with uid: %@", authData.uid);
     }
     else {
-        
+        //make the user login again if their token expired while the app was backgrounded
         NSLog(@"The token has expired, must login again");
-        //make them login again
         BOOL isLoggedIn = false;
-        
         NSString *storyboardId = isLoggedIn ? @"mainVC" : @"loginVC";
+        
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        
-        
         UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:storyboardId];
         self.window.rootViewController = initViewController;
         [self.window makeKeyAndVisible];
@@ -110,7 +158,14 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [_scanner close:nil];
     
-    //should persist the auth token to the documents folder of this app here
+    //persist the current user's token to documents folder if they exit the app
+    if(self.firebaseDB.authData) {
+        [self.info removeAllObjects];
+        NSLog(@"Saving the auth token and exiting the app");
+        NSDictionary * newDict = [[NSDictionary alloc] initWithObjectsAndKeys:self.firebaseDB.authData.token, kToken, nil];
+        [self.info addObject:newDict];
+        [self.info writeToFile:self.filePath atomically:YES];
+    }
 }
 
 @end
