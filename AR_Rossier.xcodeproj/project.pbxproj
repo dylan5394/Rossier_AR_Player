@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E073D991C81047B00CF4255 /* TriggerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E073D981C81047B00CF4255 /* TriggerModel.m */; };
 		1E39C1DF1C654916004C1B04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E39C1DE1C654916004C1B04 /* main.m */; };
 		1E39C1E21C654916004C1B04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E39C1E11C654916004C1B04 /* AppDelegate.m */; };
 		1E39C1E81C654916004C1B04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E39C1E61C654916004C1B04 /* Main.storyboard */; };
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E073D971C81047B00CF4255 /* TriggerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriggerModel.h; sourceTree = "<group>"; };
+		1E073D981C81047B00CF4255 /* TriggerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriggerModel.m; sourceTree = "<group>"; };
 		1E39C1DA1C654916004C1B04 /* AR_Rossier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AR_Rossier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E39C1DE1C654916004C1B04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1E39C1E01C654916004C1B04 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -98,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E073D9A1C81061100CF4255 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1E073D971C81047B00CF4255 /* TriggerModel.h */,
+				1E073D981C81047B00CF4255 /* TriggerModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		1E39C1D11C654916004C1B04 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +135,7 @@
 		1E39C1DC1C654916004C1B04 /* AR_Rossier */ = {
 			isa = PBXGroup;
 			children = (
+				1E073D9A1C81061100CF4255 /* Models */,
 				61737D581C77C4300031FF97 /* TabVCs */,
 				61737D571C77C4220031FF97 /* LoginVCs */,
 				1E39C1E01C654916004C1B04 /* AppDelegate.h */,
@@ -388,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6176DC281C69157E0053F231 /* LoginViewController.m in Sources */,
+				1E073D991C81047B00CF4255 /* TriggerModel.m in Sources */,
 				1E39C1E21C654916004C1B04 /* AppDelegate.m in Sources */,
 				611C0ACD1C6E997D00546DA5 /* SignUpViewController.m in Sources */,
 				61737D5B1C77C4620031FF97 /* AddTriggerViewController.m in Sources */,
