@@ -117,16 +117,17 @@
     
     //We cannot store extra images in an alternate database. Moodstocks only lets you load images from their database
     //So the below code is invalid for now
-    /*
+    
     UIImage * uploadImage = self.imageView.image;
     NSData * imageData = UIImagePNGRepresentation(uploadImage);
     NSString * base64String = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     NSMutableDictionary * quoteString = [[NSMutableDictionary alloc] init];
     [quoteString setValue:base64String forKey:@"string"];
+    
     Firebase * usersRef = [_firebaseDB childByAppendingPath:@"images"];
     NSDictionary * users = [[NSDictionary alloc] initWithObjectsAndKeys:quoteString,@"image", nil];
     [usersRef setValue:users];
-     */
+     
     
     
     [self dismissViewControllerAnimated:NO completion:nil];
