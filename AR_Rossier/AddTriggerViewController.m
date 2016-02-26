@@ -133,7 +133,6 @@
     NSDictionary * users = [[NSDictionary alloc] initWithObjectsAndKeys:quoteString,@"image", nil];
     [usersRef setValue:users];
     
-    
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 

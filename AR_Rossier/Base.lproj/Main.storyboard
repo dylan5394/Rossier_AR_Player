@@ -257,11 +257,11 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="238"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pdu-ps-D2u" id="e8P-Zg-luJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="237.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="237"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CHb-XL-sxp">
-                                            <rect key="frame" x="15" y="5" width="571" height="231.5"/>
+                                            <rect key="frame" x="15" y="5" width="571" height="232"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="WPH_Building" translatesAutoresizingMaskIntoConstraints="NO" id="VH2-hi-siO" userLabel="image">
                                                     <rect key="frame" x="9" y="19" width="160" height="150"/>
@@ -946,7 +946,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="descriptionTextField" destination="kwH-P5-tR3" id="8wq-EG-rIz"/>
                         <outlet property="imageView" destination="urd-oq-HlD" id="hai-rQ-QHF"/>
+                        <outlet property="linkTextField" destination="Adh-Mu-3xn" id="YOF-oG-hz7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eOX-jk-7Ps" userLabel="First Responder" sceneMemberID="firstResponder"/>
