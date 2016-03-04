@@ -27,7 +27,24 @@
         AppDelegate *temp = [[UIApplication sharedApplication]delegate];
         self.firebaseDB = temp.firebaseDB;
         
-        [self updateData];
+        [[self.firebaseDB childByAppendingPath:@"images"] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            [self.triggers removeAllObjects];
+            
+            for(FDataSnapshot* child in snapshot.children) {
+                
+                NSDictionary * newTrigger = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                             child.value[@"description"], kDescription,
+                                             child.value[@"media_link"], kLink,
+                                             child.value[@"string"], kImageString,
+                                             child.key, kAutoId,
+                                             nil];
+                [self.triggers addObject:newTrigger];
+            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTriggerTable" object:nil];
+            
+        } withCancelBlock:^(NSError *error) {
+            NSLog(@"%@", error.description);
+        }];
     }
     return self;
 }
@@ -62,9 +79,11 @@
     //add the trigger locally to the array then add it to the database
     Firebase * usersRef = [_firebaseDB childByAppendingPath:@"images"];
     Firebase * postRef = [usersRef childByAutoId];
+    
     [newTrigger setObject:postRef.key forKey:kAutoId];
-    [self.triggers addObject:newTrigger];
+    
     [postRef setValue:newTrigger];
+    [self.triggers addObject:newTrigger];
     
 }
 
@@ -73,38 +92,9 @@
     return self.triggers.count;
 }
 
--(void) updateData {
-    
-    //remove all existing data and add in the entire new snapshot
-    [self.triggers removeAllObjects];
-    
-    [[self.firebaseDB childByAppendingPath:@"images"] observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        
-        for(FDataSnapshot* child in snapshot.children) {
-            
-            NSDictionary * newTrigger = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                         child.value[@"description"], kDescription,
-                                         child.value[@"media_link"], kLink,
-                                         child.value[@"string"], kImageString,
-                                         child.key, kAutoId,
-                                         nil];
-            [self.triggers addObject:newTrigger];
-        }
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTriggerTable" object:nil];
-        
-    } withCancelBlock:^(NSError *error) {
-        NSLog(@"%@", error.description);
-    }];
-}
-
 - (NSDictionary *) getTrigger:(NSUInteger)index {
     
     return self.triggers[index];
-}
-
--(NSMutableArray*) getArrayForDelegate {
-    
-    return self.triggers;
 }
 
 @end

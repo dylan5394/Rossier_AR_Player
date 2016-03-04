@@ -19,8 +19,6 @@ static NSString * const kAutoId = @"autoid";
 - (void)removeTrigger: (NSUInteger) index;
 - (void)addTrigger: (NSMutableDictionary *)newTrigger;
 - (NSInteger) numTriggers;
-- (void) updateData;
 - (NSDictionary *) getTrigger: (NSUInteger) index;
-- (NSMutableArray *) getArrayForDelegate;
 
 @end

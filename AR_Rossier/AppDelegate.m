@@ -148,7 +148,13 @@ NSString * const kToken = @"token";
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [_scanner close:nil];
     
-    [[NSUserDefaults standardUserDefaults] setObject:[[TriggerModel sharedModel]getArrayForDelegate] forKey:@"myArray"];
+    NSMutableArray * cacheArray = [[NSMutableArray alloc] init];
+    TriggerModel * tempModel = [TriggerModel sharedModel];
+    for(NSUInteger i = 0; i < [tempModel numTriggers]; i++) {
+        
+        [cacheArray addObject:[tempModel getTrigger:i]];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:cacheArray forKey:@"myArray"];
     
     //persist the current user's token to documents folder if they exit the app
     if(self.firebaseDB.authData) {

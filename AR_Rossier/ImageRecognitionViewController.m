@@ -15,7 +15,7 @@
 
 static int kMSResultTypes = MSResultTypeImage | MSResultTypeQRCode | MSResultTypeEAN13;
 
-@interface ImageRecognitionViewController () <MSAutoScannerSessionDelegate, UIActionSheetDelegate>
+@interface ImageRecognitionViewController () <MSAutoScannerSessionDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *videoPreview;
 
@@ -75,7 +75,7 @@ static int kMSResultTypes = MSResultTypeImage | MSResultTypeQRCode | MSResultTyp
 
 - (void)viewWillLayoutSubviews
 {
-    [self updateInterfaceOrientation:self.interfaceOrientation];
+    [self updateInterfaceOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration
@@ -91,17 +91,37 @@ static int kMSResultTypes = MSResultTypeImage | MSResultTypeQRCode | MSResultTyp
 
 - (void)session:(id)scannerSession didFindResult:(MSResult *)result
 {
-    /*
     NSString *title = [result type] == MSResultTypeImage ? @"Image" : @"Barcode";
     NSString *message = [NSString stringWithFormat:@"%@:\n%@", title, [result string]];
-    UIActionSheet *aSheet = [[UIActionSheet alloc] initWithTitle:message
-                                                        delegate:self
-                                               cancelButtonTitle:@"OK"
-                                          destructiveButtonTitle:nil
-                                               otherButtonTitles:nil];
-    [aSheet showInView:self.view];
-     */
-    [self performSegueWithIdentifier:@"imageFound" sender:self];
+    
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"Link 1"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:nil];
+                             [self performSegueWithIdentifier:@"imageFound" sender:self];
+                             
+                         }];
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 [_scannerSession resumeProcessing];
+                                 
+                             }];
+    
+    [alert addAction:ok];
+    [alert addAction:cancel];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)updateInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -130,13 +150,6 @@ static int kMSResultTypes = MSResultTypeImage | MSResultTypeQRCode | MSResultTyp
             break;
     }
 }
-
-/*
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    [_scannerSession resumeProcessing];
-}
- */
 
 /*
 #pragma mark - Navigation
