@@ -11,12 +11,13 @@
 static NSString * const kDescription = @"description";
 static NSString * const kLink = @"media_link";
 static NSString * const kImageString = @"string";
+static NSString * const kAutoId = @"autoid";
 
 @interface TriggerModel : NSObject
 
 + (instancetype) sharedModel;
 - (void)removeTrigger: (NSUInteger) index;
-- (void)addTrigger: (NSDictionary *)newTrigger;
+- (void)addTrigger: (NSMutableDictionary *)newTrigger;
 - (NSInteger) numTriggers;
 - (void) updateData;
 - (NSDictionary *) getTrigger: (NSUInteger) index;

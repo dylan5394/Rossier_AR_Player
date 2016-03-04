@@ -27,23 +27,7 @@
         AppDelegate *temp = [[UIApplication sharedApplication]delegate];
         self.firebaseDB = temp.firebaseDB;
         
-        
-        [[self.firebaseDB childByAppendingPath:@"images"] observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-            
-            for(FDataSnapshot* child in snapshot.children) {
-            
-                NSDictionary * newTrigger = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                             child.value[@"description"], kDescription,
-                                             child.value[@"media_link"], kLink,
-                                             child.value[@"string"], kImageString,
-                                             nil];
-                [self.triggers addObject:newTrigger];
-            }
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTriggerTable" object:nil];
-            
-        } withCancelBlock:^(NSError *error) {
-            NSLog(@"%@", error.description);
-        }];
+        [self updateData];
     }
     return self;
 }
@@ -66,15 +50,20 @@
         NSLog(@"out of bounds");
     }
     
+    Firebase * usersRef = [_firebaseDB childByAppendingPath:@"images"];
+    Firebase * postRef = [usersRef childByAppendingPath:[self.triggers[index] valueForKey:kAutoId]];
+    
+    [postRef removeValue];
     [self.triggers removeObjectAtIndex:index];
 }
 
-- (void)addTrigger: (NSDictionary*) newTrigger{
+- (void)addTrigger: (NSMutableDictionary*) newTrigger{
     
     //add the trigger locally to the array then add it to the database
-    [self.triggers addObject:newTrigger];
     Firebase * usersRef = [_firebaseDB childByAppendingPath:@"images"];
     Firebase * postRef = [usersRef childByAutoId];
+    [newTrigger setObject:postRef.key forKey:kAutoId];
+    [self.triggers addObject:newTrigger];
     [postRef setValue:newTrigger];
     
 }
@@ -86,7 +75,26 @@
 
 -(void) updateData {
     
-    //pull new data, but this method may not be necessary since the callback in the init function is called every time the database has data added or removed
+    //remove all existing data and add in the entire new snapshot
+    [self.triggers removeAllObjects];
+    
+    [[self.firebaseDB childByAppendingPath:@"images"] observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        
+        for(FDataSnapshot* child in snapshot.children) {
+            
+            NSDictionary * newTrigger = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                         child.value[@"description"], kDescription,
+                                         child.value[@"media_link"], kLink,
+                                         child.value[@"string"], kImageString,
+                                         child.key, kAutoId,
+                                         nil];
+            [self.triggers addObject:newTrigger];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTriggerTable" object:nil];
+        
+    } withCancelBlock:^(NSError *error) {
+        NSLog(@"%@", error.description);
+    }];
 }
 
 - (NSDictionary *) getTrigger:(NSUInteger)index {
