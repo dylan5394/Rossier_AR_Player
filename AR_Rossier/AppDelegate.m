@@ -6,6 +6,7 @@
 //  Copyright © 2016 AR_Rossier. All rights reserved.
 //
 
+#import "TriggerModel.h"
 #import "ImageRecognitionViewController.h"
 #import "AppDelegate.h"
 #import <Moodstocks/Moodstocks.h>
@@ -48,17 +49,6 @@ NSString * const kToken = @"token";
     
     // Launch the synchronization
     [_scanner syncInBackgroundWithBlock:completionBlock progressBlock:progressionBlock];
-    
-    //we also need to import a bundle file with image data to bypass moodstocks database size limitations
-    /*
-     
-     
-     
-     
-    code for importing bundle should go here -- bundle should get image data from an alternate database
-     
-     
-     */
     
     //Read from the token storage file
     NSLog(@"Checking token.plist file for an auth token");
@@ -157,6 +147,8 @@ NSString * const kToken = @"token";
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [_scanner close:nil];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[[TriggerModel sharedModel]getArrayForDelegate] forKey:@"myArray"];
     
     //persist the current user's token to documents folder if they exit the app
     if(self.firebaseDB.authData) {

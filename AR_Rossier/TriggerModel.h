@@ -8,18 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+static NSString * const kDescription = @"description";
+static NSString * const kLink = @"media_link";
+static NSString * const kImageString = @"string";
+
 @interface TriggerModel : NSObject
 
-- (int) value;
 + (instancetype) sharedModel;
-- (void)removeTrigger;
-- (void)addTrigger;
-- (int) numTriggers;
+- (void)removeTrigger: (NSUInteger) index;
+- (void)addTrigger: (NSDictionary *)newTrigger;
+- (NSInteger) numTriggers;
 - (void) updateData;
-
-//remove
-//add
-//numTriggers
-
+- (NSDictionary *) getTrigger: (NSUInteger) index;
+- (NSMutableArray *) getArrayForDelegate;
 
 @end

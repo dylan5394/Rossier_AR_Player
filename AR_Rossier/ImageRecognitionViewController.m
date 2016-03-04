@@ -7,13 +7,20 @@
 //
 
 #import "AppDelegate.h"
+#import "PRARManager.h"
 #import "ImageRecognitionViewController.h"
+
+#include <stdlib.h>
+
+#define NUMBER_OF_POINTS    20
 
 static int kMSResultTypes = MSResultTypeImage | MSResultTypeQRCode | MSResultTypeEAN13;
 
-@interface ImageRecognitionViewController () <MSAutoScannerSessionDelegate, UIActionSheetDelegate>
+@interface ImageRecognitionViewController () <MSAutoScannerSessionDelegate, UIActionSheetDelegate, PRARManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *videoPreview;
+
+@property (strong, nonatomic) PRARManager * prARManager;
 
 @end
 
@@ -25,6 +32,7 @@ static int kMSResultTypes = MSResultTypeImage | MSResultTypeQRCode | MSResultTyp
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     _scanner = [(AppDelegate *)[[UIApplication sharedApplication] delegate] scanner];
     
@@ -44,6 +52,22 @@ static int kMSResultTypes = MSResultTypeImage | MSResultTypeQRCode | MSResultTyp
                                 below:[[videoPreviewLayer sublayers] objectAtIndex:0]];
     
     [_scannerSession startRunning];
+    
+    
+    self.prARManager = [[PRARManager alloc] initWithSize:self.videoPreview.frame.size delegate:self showRadar:false captureLayer:captureLayer];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    //CLLocationCoordinate2D locationCoordinates = CLLocationCoordinate2DMake(0.0,0.0);
+    //[self.prARManager startARWithData:[self getDummyData] forLocation:locationCoordinates];
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    //[self.prARManager stopAR];
 }
 
 -(void) dealloc {
@@ -121,6 +145,84 @@ static int kMSResultTypes = MSResultTypeImage | MSResultTypeQRCode | MSResultTyp
     [_scannerSession resumeProcessing];
 }
  */
+
+#pragma mark - Dummy data
+
+-(NSArray*)getDummyData
+{
+    NSMutableArray *points = [NSMutableArray arrayWithCapacity:NUMBER_OF_POINTS];
+    
+    srand48(time(0));
+    for (int i=0; i<NUMBER_OF_POINTS; i++)
+    {
+        CLLocationCoordinate2D pointCoordinates = [self getRandomLocation];
+        NSDictionary *point = [self createPointWithId:i at:pointCoordinates];
+        [points addObject:point];
+    }
+    
+    return [NSArray arrayWithArray:points];
+}
+
+-(CLLocationCoordinate2D)getRandomLocation
+{
+    double latRand = drand48() * 90.0;
+    double lonRand = drand48() * 180.0;
+    double latSign = drand48();
+    double lonSign = drand48();
+    
+    CLLocationCoordinate2D locCoordinates = CLLocationCoordinate2DMake(latSign > 0.5 ? latRand : -latRand,
+                                                                       lonSign > 0.5 ? lonRand*2 : -lonRand*2);
+    return locCoordinates;
+}
+
+// Creates the Data for an AR Object at a given location
+-(NSDictionary*)createPointWithId:(int)the_id at:(CLLocationCoordinate2D)locCoordinates
+{
+    NSDictionary *point = @{
+                            @"id" : @(the_id),
+                            @"title" : [NSString stringWithFormat:@"Link/Video/Photo %d", the_id],
+                            @"lon" : @(locCoordinates.longitude),
+                            @"lat" : @(locCoordinates.latitude)
+                            };
+    return point;
+}
+
+#pragma mark - PRAR delegate methods
+
+-(void)prarDidSetupAR:(UIView *)arView withCameraLayer:(AVCaptureVideoPreviewLayer *)cameraLayer {
+    
+    /*
+     CALayer *videoPreviewLayer = [self.videoPreview layer];
+     [videoPreviewLayer setMasksToBounds:YES];
+     
+     CALayer *captureLayer = [_scannerSession captureLayer];
+     [captureLayer setFrame:[self.videoPreview bounds]];
+     
+     [videoPreviewLayer insertSublayer:captureLayer
+     below:[[videoPreviewLayer sublayers] objectAtIndex:0]];
+     
+     [self.view.layer addSublayer:cameraLayer];
+     [self.view addSubview:arView];
+     
+     [self.view bringSubviewToFront:[self.view viewWithTag:AR_VIEW_TAG]];
+     */
+    
+    NSLog(@"Displaying AR now");
+    
+    [self.videoPreview.layer addSublayer:cameraLayer];
+    [self.videoPreview addSubview:arView];
+    [self.videoPreview bringSubviewToFront:[self.videoPreview viewWithTag:AR_VIEW_TAG]];
+}
+
+-(void)prarUpdateFrame:(CGRect)arViewFrame {
+    
+    [[self.videoPreview viewWithTag:AR_VIEW_TAG] setFrame:arViewFrame];
+}
+
+-(void) prarGotProblem:(NSString *)problemTitle withDetails:(NSString *)problemDetails {
+    
+    NSLog(@"Problem happened");
+}
 
 /*
 #pragma mark - Navigation

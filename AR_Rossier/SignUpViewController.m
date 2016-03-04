@@ -28,10 +28,7 @@
     // Do any additional setup after loading the view.
     
     AppDelegate *temp = [[UIApplication sharedApplication]delegate];
-    _firebaseDB = temp.firebaseDB;
-    // Write data to Firebase
-    //[_firebaseDB setValue:@"Viewed the signup screen."];
-    
+    _firebaseDB = temp.firebaseDB;    
     
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
                                            initWithTarget:self

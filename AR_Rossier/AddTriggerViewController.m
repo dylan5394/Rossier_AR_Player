@@ -6,6 +6,7 @@
 //  Copyright © 2016 AR_Rossier. All rights reserved.
 //
 
+#import "TriggerModel.h"
 #import "AppDelegate.h"
 #import <Firebase/Firebase.h>
 #import "AddTriggerViewController.h"
@@ -16,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
+@property (strong, nonatomic) TriggerModel * model;
 
 @end
 
@@ -30,6 +32,8 @@
     
     AppDelegate *temp = [[UIApplication sharedApplication]delegate];
     _firebaseDB = temp.firebaseDB;
+    
+    self.model = [TriggerModel sharedModel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -116,22 +120,18 @@
 
 - (IBAction)addTriggerButtonTapped:(id)sender {
     
-    
-    //We cannot store extra images in an alternate database. Moodstocks only lets you load images from their database
-    //So the below code is invalid for now
-
+    //This simply stores the trigger in the firebase database, from here we would need to send it to a server to be added to moodstocks
     UIImage * uploadImage = self.imageView.image;
-    NSData * imageData = UIImagePNGRepresentation(uploadImage);
+    NSData *imageData = UIImageJPEGRepresentation(uploadImage, 0.9);
+    //NSData * imageData = UIImagePNGRepresentation(uploadImage);
     NSString * base64String = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     
     NSMutableDictionary * quoteString = [[NSMutableDictionary alloc] init];
     [quoteString setValue:base64String forKey:@"string"];
     [quoteString setValue:self.linkTextField.text forKey:@"media_link"];
     [quoteString setValue:self.descriptionTextField.text forKey:@"description"];
-     
-    Firebase * usersRef = [_firebaseDB childByAppendingPath:@"images"];
-    NSDictionary * users = [[NSDictionary alloc] initWithObjectsAndKeys:quoteString,@"image", nil];
-    [usersRef setValue:users];
+    
+    [self.model addTrigger:quoteString];
     
     [self dismissViewControllerAnimated:NO completion:nil];
 }
