@@ -96,6 +96,11 @@
     
     NSData *data = [[NSData alloc]initWithBase64EncodedString:currentTrigger[kImageString] options:NSDataBase64DecodingIgnoreUnknownCharacters];
     
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    cell.imageView.layer.cornerRadius = 4;
+    cell.imageView.layer.masksToBounds = YES;
+    
     cell.imageView.image = [UIImage imageWithData:data];
     
     return cell;
