@@ -64,9 +64,7 @@
                 AppDelegate * temp = [[UIApplication sharedApplication] delegate];
                 temp.expirationToken = authData.expires;
                 
-                AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
-                
-                appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+                temp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
             }
     }];
 }
