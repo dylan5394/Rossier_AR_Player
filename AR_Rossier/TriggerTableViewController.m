@@ -6,6 +6,7 @@
 //  Copyright © 2016 AR_Rossier. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "TriggerModel.h"
 #import "TriggerTableViewController.h"
 
@@ -28,9 +29,9 @@
     
     self.model = [TriggerModel sharedModel];
     
-    self.cachedData = [[NSMutableArray alloc]
-                       initWithArray:[[NSUserDefaults standardUserDefaults]
-                                      objectForKey:@"myArray"]];
+    AppDelegate * temp = [[UIApplication sharedApplication] delegate];
+    
+    self.cachedData = [NSMutableArray arrayWithContentsOfFile:temp.cacheFilePath];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -98,7 +99,7 @@
     
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    cell.imageView.layer.cornerRadius = 4;
+    cell.imageView.layer.cornerRadius = 25;
     cell.imageView.layer.masksToBounds = YES;
     
     cell.imageView.image = [UIImage imageWithData:data];

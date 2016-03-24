@@ -61,9 +61,12 @@
          NSString *uid = [result objectForKey:@"uid"];
          NSLog(@"Successfully created user account with uid: %@", uid);
          
-         AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+         AppDelegate *temp = [[UIApplication sharedApplication]delegate];
+
+         [temp.keychain setObject:(id)kSecAttrAccount forKey:self.emailField.text];
+         [temp.keychain setObject:(id)kSecValueData forKey:self.passwordField.text];
          
-         appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+         temp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
      }
     }];
 }

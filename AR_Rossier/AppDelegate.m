@@ -18,7 +18,7 @@ NSString * const kToken = @"token";
 
 @interface AppDelegate ()
 
-@property (strong,nonatomic) NSString * filePath;
+@property (strong,nonatomic) NSString * tokenFilePath;
 @property (strong, nonatomic) NSMutableArray * info;
 @property BOOL isLoggedIn;
 
@@ -29,6 +29,10 @@ NSString * const kToken = @"token";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //init the keychain
+    self.keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"ITP342.AR-Rossier.password" accessGroup:nil];
+    [self.keychain setObject:(id)kSecAttrAccessibleWhenUnlocked forKey:(id)kSecAttrAccessible];
     
     //sync with the moodstocks database and load the images in that database into our scanner
     self.firebaseDB = [[Firebase alloc] initWithUrl:@"https://usc-rossier-ar.firebaseio.com"];
@@ -55,8 +59,9 @@ NSString * const kToken = @"token";
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString * documentsDirectory = [paths objectAtIndex:0];
     NSLog(@"%@", documentsDirectory);
-    self.filePath = [documentsDirectory stringByAppendingPathComponent:@"Token.plist"];
-    self.info = [NSMutableArray arrayWithContentsOfFile:self.filePath];
+    self.tokenFilePath = [documentsDirectory stringByAppendingPathComponent:@"Token.plist"];
+    self.cacheFilePath = [documentsDirectory stringByAppendingString:@"Cache.plist"];
+    self.info = [NSMutableArray arrayWithContentsOfFile:self.tokenFilePath];
     
     
     self.isLoggedIn = false;
@@ -79,6 +84,7 @@ NSString * const kToken = @"token";
             } else {
                 
                 NSLog(@"Login succeeded, sending the user straight to the mainVC! %@", authData);
+                
                 self.isLoggedIn = true;
                 NSString *storyboardId = self.isLoggedIn ? @"mainVC" : @"loginVC";
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -148,13 +154,14 @@ NSString * const kToken = @"token";
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [_scanner close:nil];
     
+    //Cache the trigger array so we dont need to wait for a database query next login
     NSMutableArray * cacheArray = [[NSMutableArray alloc] init];
     TriggerModel * tempModel = [TriggerModel sharedModel];
     for(NSUInteger i = 0; i < [tempModel numTriggers]; i++) {
         
         [cacheArray addObject:[tempModel getTrigger:i]];
     }
-    [[NSUserDefaults standardUserDefaults] setObject:cacheArray forKey:@"myArray"];
+    [cacheArray writeToFile:self.cacheFilePath atomically:YES];
     
     //persist the current user's token to documents folder if they exit the app
     if(self.firebaseDB.authData) {
@@ -162,7 +169,7 @@ NSString * const kToken = @"token";
         NSLog(@"Saving the auth token and exiting the app");
         NSDictionary * newDict = [[NSDictionary alloc] initWithObjectsAndKeys:self.firebaseDB.authData.token, kToken, nil];
         [self.info addObject:newDict];
-        [self.info writeToFile:self.filePath atomically:YES];
+        [self.info writeToFile:self.tokenFilePath atomically:YES];
     }
 }
 

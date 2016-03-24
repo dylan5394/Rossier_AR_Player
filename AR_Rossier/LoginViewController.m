@@ -64,6 +64,10 @@
                 AppDelegate * temp = [[UIApplication sharedApplication] delegate];
                 temp.expirationToken = authData.expires;
                 
+                //change this to store in the keychain
+                [temp.keychain setObject:(id)kSecAttrAccount forKey:self.emailField.text];
+                [temp.keychain setObject:(id)kSecValueData forKey:self.passwordField.text];
+                
                 temp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
             }
     }];
