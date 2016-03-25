@@ -33,21 +33,9 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)changeEmail {
-    
-    [_firebaseDB changeEmailForUser:@"oldemail@firebase.com" password:@"correcthorsebatterystaple"
-                 toNewEmail:@"newemail@firebase.com" withCompletionBlock:^(NSError *error) {
-                     if (error) {
-                         // There was an error processing the request
-                     } else {
-                         // Email changed successfully
-                     }
-                 }];
-}
-
 -(void)changePassword {
     
-    [_firebaseDB changePasswordForUser:@"bobtony@example.com" fromOld:@"correcthorsebatterystaple"
+    [_firebaseDB changePasswordForUser:[_temp.keychain valueForKey:(id)kSecAttrAccount] fromOld:[_temp.keychain valueForKey:(id)kSecValueData]
                          toNew:@"batteryhorsestaplecorrect" withCompletionBlock:^(NSError *error) {
                              if (error) {
                                  // There was an error processing the request
@@ -67,7 +55,7 @@
 
 -(void)sendPasswordReset {
     
-    [_firebaseDB resetPasswordForUser:@"bobtony@example.com" withCompletionBlock:^(NSError *error) {
+    [_firebaseDB resetPasswordForUser:[_temp.keychain valueForKey:(id)kSecAttrAccount] withCompletionBlock:^(NSError *error) {
         if (error) {
             // There was an error processing the request
         } else {
@@ -78,14 +66,14 @@
 
 -(void)deleteUser {
     
-    [_firebaseDB removeUser:@"bobtony@example.com" password:@"correcthorsebatterystaple"
+    [_firebaseDB removeUser:[_temp.keychain valueForKey:(id)kSecAttrAccount] password:[_temp.keychain valueForKey:(id)kSecValueData]
 withCompletionBlock:^(NSError *error) {
-    if (error) {
-        // There was an error processing the request
-    } else {
-        // User deleted
-    }
-}];
+        if (error) {
+            // There was an error processing the request
+        } else {
+            // User deleted
+        }
+    }];
 }
 
 /*
