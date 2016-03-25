@@ -18,6 +18,9 @@
 		1E8223151C6912D900682473 /* TriggerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8223141C6912D900682473 /* TriggerTableViewController.m */; };
 		611C0ACA1C6E8B2200546DA5 /* ImageRecognitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 611C0AC91C6E8B2200546DA5 /* ImageRecognitionViewController.m */; };
 		611C0ACD1C6E997D00546DA5 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 611C0ACC1C6E997D00546DA5 /* SignUpViewController.m */; };
+		61237C131CA32D8B005A14D4 /* UserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61237C121CA32D8B005A14D4 /* UserSettingsViewController.m */; };
+		612CECBB1CA47FFF00C2010A /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 612CECBA1CA47FFF00C2010A /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		612CECBD1CA481FE00C2010A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612CECBC1CA481FE00C2010A /* Security.framework */; };
 		61737D5B1C77C4620031FF97 /* AddTriggerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61737D5A1C77C4620031FF97 /* AddTriggerViewController.m */; };
 		61737D5E1C77DC0B0031FF97 /* TriggerContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61737D5D1C77DC0B0031FF97 /* TriggerContentViewController.m */; };
 		6176DC281C69157E0053F231 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6176DC271C69157E0053F231 /* LoginViewController.m */; };
@@ -65,6 +68,11 @@
 		611C0AC91C6E8B2200546DA5 /* ImageRecognitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageRecognitionViewController.m; sourceTree = "<group>"; };
 		611C0ACB1C6E997D00546DA5 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		611C0ACC1C6E997D00546DA5 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		61237C111CA32D8B005A14D4 /* UserSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettingsViewController.h; sourceTree = "<group>"; };
+		61237C121CA32D8B005A14D4 /* UserSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettingsViewController.m; sourceTree = "<group>"; };
+		612CECB91CA47FFF00C2010A /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		612CECBA1CA47FFF00C2010A /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		612CECBC1CA481FE00C2010A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		61737D591C77C4620031FF97 /* AddTriggerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTriggerViewController.h; sourceTree = "<group>"; };
 		61737D5A1C77C4620031FF97 /* AddTriggerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTriggerViewController.m; sourceTree = "<group>"; };
 		61737D5C1C77DC0B0031FF97 /* TriggerContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriggerContentViewController.h; sourceTree = "<group>"; };
@@ -80,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				612CECBD1CA481FE00C2010A /* Security.framework in Frameworks */,
 				659D8DCA124D41100A56445C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,15 +144,13 @@
 		1E39C1DC1C654916004C1B04 /* AR_Rossier */ = {
 			isa = PBXGroup;
 			children = (
+				612CECB81CA47FDF00C2010A /* Helpers */,
+				612CECB71CA47F8400C2010A /* Resources */,
+				612CECB51CA47F5B00C2010A /* Delegate */,
 				1E073D9A1C81061100CF4255 /* Models */,
 				61737D581C77C4300031FF97 /* TabVCs */,
 				61737D571C77C4220031FF97 /* LoginVCs */,
-				1E39C1E01C654916004C1B04 /* AppDelegate.h */,
-				1E39C1E11C654916004C1B04 /* AppDelegate.m */,
-				1E39C1E61C654916004C1B04 /* Main.storyboard */,
-				1E39C1E91C654916004C1B04 /* Assets.xcassets */,
-				1E39C1EB1C654916004C1B04 /* LaunchScreen.storyboard */,
-				1E39C1EE1C654916004C1B04 /* Info.plist */,
+				612CECB61CA47F6C00C2010A /* Storyboards */,
 				1E39C1DD1C654916004C1B04 /* Supporting Files */,
 			);
 			path = AR_Rossier;
@@ -187,9 +194,57 @@
 		4CE131D011452EE60A5780E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				612CECBC1CA481FE00C2010A /* Security.framework */,
 				39CE23F0C0260C5FF7FB79D7 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		612CECB41CA47F2E00C2010A /* DetailVCs */ = {
+			isa = PBXGroup;
+			children = (
+				61737D591C77C4620031FF97 /* AddTriggerViewController.h */,
+				61737D5A1C77C4620031FF97 /* AddTriggerViewController.m */,
+				61737D5C1C77DC0B0031FF97 /* TriggerContentViewController.h */,
+				61737D5D1C77DC0B0031FF97 /* TriggerContentViewController.m */,
+			);
+			name = DetailVCs;
+			sourceTree = "<group>";
+		};
+		612CECB51CA47F5B00C2010A /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				1E39C1E01C654916004C1B04 /* AppDelegate.h */,
+				1E39C1E11C654916004C1B04 /* AppDelegate.m */,
+			);
+			name = Delegate;
+			sourceTree = "<group>";
+		};
+		612CECB61CA47F6C00C2010A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				1E39C1E61C654916004C1B04 /* Main.storyboard */,
+				1E39C1EB1C654916004C1B04 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		612CECB71CA47F8400C2010A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1E39C1E91C654916004C1B04 /* Assets.xcassets */,
+				1E39C1EE1C654916004C1B04 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		612CECB81CA47FDF00C2010A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				612CECB91CA47FFF00C2010A /* KeychainItemWrapper.h */,
+				612CECBA1CA47FFF00C2010A /* KeychainItemWrapper.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		61737D571C77C4220031FF97 /* LoginVCs */ = {
@@ -210,10 +265,9 @@
 				611C0AC91C6E8B2200546DA5 /* ImageRecognitionViewController.m */,
 				1E8223131C6912D900682473 /* TriggerTableViewController.h */,
 				1E8223141C6912D900682473 /* TriggerTableViewController.m */,
-				61737D591C77C4620031FF97 /* AddTriggerViewController.h */,
-				61737D5A1C77C4620031FF97 /* AddTriggerViewController.m */,
-				61737D5C1C77DC0B0031FF97 /* TriggerContentViewController.h */,
-				61737D5D1C77DC0B0031FF97 /* TriggerContentViewController.m */,
+				61237C111CA32D8B005A14D4 /* UserSettingsViewController.h */,
+				61237C121CA32D8B005A14D4 /* UserSettingsViewController.m */,
+				612CECB41CA47F2E00C2010A /* DetailVCs */,
 			);
 			name = TabVCs;
 			sourceTree = "<group>";
@@ -404,7 +458,9 @@
 				1E073D991C81047B00CF4255 /* TriggerModel.m in Sources */,
 				1E39C1E21C654916004C1B04 /* AppDelegate.m in Sources */,
 				611C0ACD1C6E997D00546DA5 /* SignUpViewController.m in Sources */,
+				61237C131CA32D8B005A14D4 /* UserSettingsViewController.m in Sources */,
 				61737D5B1C77C4620031FF97 /* AddTriggerViewController.m in Sources */,
+				612CECBB1CA47FFF00C2010A /* KeychainItemWrapper.m in Sources */,
 				611C0ACA1C6E8B2200546DA5 /* ImageRecognitionViewController.m in Sources */,
 				1E8223151C6912D900682473 /* TriggerTableViewController.m in Sources */,
 				1E39C1DF1C654916004C1B04 /* main.m in Sources */,
