@@ -20,7 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSURL * url = [NSURL URLWithString:@"https://www.youtube.com/watch?v=GBKy-hSedg8"];
+    //Load the website
+    NSURL * url = [NSURL URLWithString:self.link];
     NSURLRequest * request = [NSURLRequest requestWithURL:url];
     
     [self.webView loadRequest:request];

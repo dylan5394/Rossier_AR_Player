@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^AddTriggerCompletionHandler)(NSString * imageString,
+                                           NSString * linkString,
+                                           NSString * descriptionString,
+                                           NSData * imageData);
+
 @interface AddTriggerViewController : UIViewController
+
+@property (copy, nonatomic) AddTriggerCompletionHandler completionHandler;
 
 @end

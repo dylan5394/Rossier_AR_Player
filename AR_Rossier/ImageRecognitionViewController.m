@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "ImageRecognitionViewController.h"
+#import "TriggerModel.h"
+#import "TriggerContentViewController.h"
 
 #include <stdlib.h>
 
@@ -18,6 +20,8 @@ static int kMSResultTypes = MSResultTypeImage | MSResultTypeQRCode | MSResultTyp
 @interface ImageRecognitionViewController () <MSAutoScannerSessionDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *videoPreview;
+@property (strong, nonatomic) TriggerModel * model;
+@property (strong, nonatomic) NSString * clickedLink;
 
 @end
 
@@ -31,6 +35,8 @@ static int kMSResultTypes = MSResultTypeImage | MSResultTypeQRCode | MSResultTyp
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
+    self.model = [TriggerModel sharedModel];
+    
     _scanner = [(AppDelegate *)[[UIApplication sharedApplication] delegate] scanner];
     
     _scannerSession = [[MSAutoScannerSession alloc] initWithScanner:_scanner];
@@ -99,15 +105,29 @@ static int kMSResultTypes = MSResultTypeImage | MSResultTypeQRCode | MSResultTyp
                                   message:message
                                   preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction* ok = [UIAlertAction
-                         actionWithTitle:@"Link 1"
-                         style:UIAlertActionStyleDefault
-                         handler:^(UIAlertAction * action)
-                         {
-                             [alert dismissViewControllerAnimated:YES completion:nil];
-                             [self performSegueWithIdentifier:@"imageFound" sender:self];
-                             
-                         }];
+    //Find the correct trigger that was recognized
+    for(int i =0; i < [self.model numTriggers]; i ++) {
+        
+        //Create an action sheet button leading to a link for each link that is associated with the trigger
+        if([[self.model getTrigger:i][kAutoId] isEqualToString:[result string]]) {
+            
+            for(NSString* link in [self.model getTrigger:i][kLink]) {
+                
+                UIAlertAction* ok = [UIAlertAction
+                                     actionWithTitle:link
+                                     style:UIAlertActionStyleDefault
+                                     handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         self.clickedLink = title;
+                                         [self performSegueWithIdentifier:@"imageFound" sender:self];
+                                         
+                                     }];
+                [alert addAction:ok];
+            }
+        }
+    }
+    
     UIAlertAction* cancel = [UIAlertAction
                              actionWithTitle:@"Cancel"
                              style:UIAlertActionStyleDefault
@@ -118,7 +138,6 @@ static int kMSResultTypes = MSResultTypeImage | MSResultTypeQRCode | MSResultTyp
                                  
                              }];
     
-    [alert addAction:ok];
     [alert addAction:cancel];
     
     [self presentViewController:alert animated:YES completion:nil];
@@ -151,14 +170,16 @@ static int kMSResultTypes = MSResultTypeImage | MSResultTypeQRCode | MSResultTyp
     }
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    TriggerContentViewController * nextVC = [segue destinationViewController];
+    nextVC.link = self.clickedLink;
 }
-*/
+
 
 @end

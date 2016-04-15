@@ -10,4 +10,6 @@
 
 @interface TriggerContentViewController : UIViewController
 
+@property (weak, nonatomic) NSString * link;
+
 @end

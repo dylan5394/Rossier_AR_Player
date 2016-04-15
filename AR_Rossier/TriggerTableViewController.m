@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "TriggerModel.h"
 #import "TriggerTableViewController.h"
+#import "AddTriggerViewController.h"
 
 @interface TriggerTableViewController ()
 
@@ -25,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //Set this to false initially so that the controller knows to use the cached data
     _databaseLoaded = false;
     
     self.model = [TriggerModel sharedModel];
@@ -52,12 +54,14 @@
 
 -(void)refreshView:(NSNotification *) notification {
     
+    //At this point, the table controller will know to use the updated data from the database
     _databaseLoaded = true;
     [self.tableView reloadData];
 }
 
 -(void) getLatestTasks {
     
+    //Pull new data from firebase if it exists
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }
@@ -76,7 +80,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.model.numTriggers;
+    //Return the number of rows in the firebase databse if it has loaded yet, otherwise use the cached data
+    if(_databaseLoaded) {
+        return self.model.numTriggers;
+    }
+    else {
+        
+        if(self.cachedData) {
+            return self.cachedData.count;
+        }
+        else {
+            return 0;
+        }
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -91,11 +107,12 @@
     else {
         currentTrigger = [_cachedData objectAtIndex:indexPath.row];
     }
+    //Set the cell text label and image view to the approporiate trigger
     cell.detailTextLabel.text = currentTrigger[kDescription];
     cell.textLabel.text = currentTrigger[kDescription];
     
-    
     NSData *data = [[NSData alloc]initWithBase64EncodedString:currentTrigger[kImageString] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    
     
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
@@ -138,14 +155,37 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    AddTriggerViewController * addTriggerVC = [segue destinationViewController];
+    
+    addTriggerVC.completionHandler = ^(NSString * imageString,
+                                       NSString * linkString,
+                                       NSString * descriptionString,
+                                       NSData * imageData) {
+        
+        if((imageString != nil && imageString.length > 0) && (linkString != nil && linkString.length > 0)) {
+            
+            NSString * links = [linkString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            NSArray * linkArray = [links componentsSeparatedByString:@","];
+            
+            NSMutableDictionary * quoteString = [[NSMutableDictionary alloc] init];
+            [quoteString setValue:imageString forKey:kImageString];
+            [quoteString setValue:linkArray forKey:kLink];
+            [quoteString setValue:descriptionString forKey:kDescription];
+            
+            [self.model addTrigger:quoteString
+                        withImageData:imageData];
+        }
+        [self dismissViewControllerAnimated:YES completion:nil];
+    };
 }
-*/
+
 
 @end

@@ -65,8 +65,8 @@
                 temp.expirationToken = authData.expires;
                 
                 //change this to store in the keychain
-                [temp.keychain setObject:(id)kSecAttrAccount forKey:self.emailField.text];
-                [temp.keychain setObject:(id)kSecValueData forKey:self.passwordField.text];
+                [temp.keychain setObject:self.emailField.text forKey:(id)kSecAttrAccount];
+                [temp.keychain setObject:self.passwordField.text forKey:(id)kSecValueData];
                 
                 temp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
             }

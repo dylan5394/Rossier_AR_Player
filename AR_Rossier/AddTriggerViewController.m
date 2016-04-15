@@ -11,11 +11,12 @@
 #import <Firebase/Firebase.h>
 #import "AddTriggerViewController.h"
 
-@interface AddTriggerViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface AddTriggerViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *linkTextField;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 @property (strong, nonatomic) TriggerModel * model;
 
@@ -33,12 +34,62 @@
     AppDelegate *temp = [[UIApplication sharedApplication]delegate];
     _firebaseDB = temp.firebaseDB;
     
+    self.linkTextField.delegate=self;
+    
     self.model = [TriggerModel sharedModel];
+    
+    //Add a gesture recognizer to dismiss the keyboard when a user taps outside of the keyboard field
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(hideKeyBoard)];
+    
+    [self.view addGestureRecognizer:tapGesture];
 }
 
+-(void)hideKeyBoard {
+    
+    if(self.linkTextField.isFirstResponder) {
+        [self.linkTextField resignFirstResponder];
+    }
+    else if(self.descriptionTextField.isFirstResponder) {
+        [self.descriptionTextField resignFirstResponder];
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) enableSaveButtonForLink: (NSString *) linkText
+                          image: (UIImage *) image{
+    
+    self.saveButton.enabled = (linkText.length>0 && image);
+}
+
+-(BOOL) textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string {
+    
+    //Used to enable the save button if an image exists in the image view and a description of the trigger is provided
+    if([textField isEqual:self.linkTextField]) {
+     
+        NSString * changedString = [textField.text
+                                    stringByReplacingCharactersInRange:range
+                                    withString:string];
+        
+        [self enableSaveButtonForLink: changedString
+                                image: self.imageView.image];
+
+    }
+    
+    return YES;
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
@@ -47,6 +98,8 @@
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     
     _imageView.image = originalImage;
+    
+    [self enableSaveButtonForLink:self.linkTextField.text image:originalImage];
     
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
@@ -116,24 +169,47 @@
 - (IBAction)cancelButtonTapped:(id)sender {
     
     [self dismissViewControllerAnimated:NO completion:nil];
+    
+    
+    if(self.completionHandler) {
+        self.completionHandler(nil, nil, nil, nil);
+    }
 }
 
 - (IBAction)addTriggerButtonTapped:(id)sender {
     
-    //This simply stores the trigger in the firebase database, from here we would need to send it to a server to be added to moodstocks
+    //Convert the image to string type before adding
     UIImage * uploadImage = self.imageView.image;
-    NSData *imageData = UIImageJPEGRepresentation(uploadImage, 0.9);
-    //NSData * imageData = UIImagePNGRepresentation(uploadImage);
+    
+    if(uploadImage.size.height>uploadImage.size.width) {
+        
+        UIGraphicsBeginImageContext(CGSizeMake(uploadImage.size.width, uploadImage.size.width));
+        [uploadImage drawInRect:CGRectMake(0,0,uploadImage.size.width, uploadImage.size.width)];
+        uploadImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }
+    else {
+        
+        UIGraphicsBeginImageContext(CGSizeMake(uploadImage.size.height, uploadImage.size.height));
+        [uploadImage drawInRect:CGRectMake(0,0,uploadImage.size.height, uploadImage.size.height)];
+        uploadImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }
+    
+    NSLog(@"Height of chosen image: %f", uploadImage.size.height);
+    NSLog(@"Width of chosen image: %f", uploadImage.size.width);
+    
+    NSData * testData = UIImageJPEGRepresentation(uploadImage, 1.0);
+    NSLog(@"Size of uncompressed image: %lu bytes", (unsigned long)testData.length);
+    
+    NSData *imageData = UIImageJPEGRepresentation(uploadImage, 0.8);
+    NSLog(@"Size of compressed image: %lu bytes", (unsigned long)imageData.length);
+    
     NSString * base64String = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     
-    NSMutableDictionary * quoteString = [[NSMutableDictionary alloc] init];
-    [quoteString setValue:base64String forKey:@"string"];
-    [quoteString setValue:self.linkTextField.text forKey:@"media_link"];
-    [quoteString setValue:self.descriptionTextField.text forKey:@"description"];
-    
-    [self.model addTrigger:quoteString];
-    
-    [self dismissViewControllerAnimated:NO completion:nil];
+    if(self.completionHandler) {
+        self.completionHandler(base64String, self.linkTextField.text, self.descriptionTextField.text, imageData);
+    }
 }
 
 /*

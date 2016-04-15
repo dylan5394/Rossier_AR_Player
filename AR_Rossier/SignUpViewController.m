@@ -30,6 +30,7 @@
     AppDelegate *temp = [[UIApplication sharedApplication]delegate];
     _firebaseDB = temp.firebaseDB;    
     
+    //Resign the keyboard if a user taps outside of the text field or keyboard
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
                                            initWithTarget:self
                                            action:@selector(hideKeyBoard)];
@@ -63,8 +64,8 @@
          
          AppDelegate *temp = [[UIApplication sharedApplication]delegate];
 
-         [temp.keychain setObject:(id)kSecAttrAccount forKey:self.emailField.text];
-         [temp.keychain setObject:(id)kSecValueData forKey:self.passwordField.text];
+         [temp.keychain setObject:self.emailField.text forKey:(id)kSecAttrAccount];
+         [temp.keychain setObject:self.passwordField.text forKey:(id)kSecValueData];
          
          temp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
      }

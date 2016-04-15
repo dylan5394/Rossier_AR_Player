@@ -17,8 +17,10 @@
 @property (strong, nonatomic) MSScanner *scanner;
 @property (strong, nonatomic) Firebase * firebaseDB;
 @property (strong, nonatomic) NSNumber * expirationToken;
-@property (strong, nonatomic) NSString * cacheFilePath;
 @property (strong, nonatomic) KeychainItemWrapper * keychain;
+
+@property (strong, nonatomic) NSString * tokenFilePath;
+@property (strong, nonatomic) NSString * cacheFilePath;
 
 @end
 

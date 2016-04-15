@@ -18,7 +18,6 @@ NSString * const kToken = @"token";
 
 @interface AppDelegate ()
 
-@property (strong,nonatomic) NSString * tokenFilePath;
 @property (strong, nonatomic) NSMutableArray * info;
 @property BOOL isLoggedIn;
 
@@ -30,16 +29,26 @@ NSString * const kToken = @"token";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    //init the keychain
+    
+    //Set the launch screen as the initial view so that the user isn't looking at the main app while their credentials are verified
+    UIStoryboard *launchBoard = [UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    UIViewController *launchVC = [launchBoard instantiateInitialViewController];
+    self.window.rootViewController = launchVC;
+    [self.window makeKeyAndVisible];
+    
+    
+    //Initialize the keychain
     self.keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"ITP342.AR-Rossier.password" accessGroup:nil];
     [self.keychain setObject:(id)kSecAttrAccessibleWhenUnlocked forKey:(id)kSecAttrAccessible];
     
-    //sync with the moodstocks database and load the images in that database into our scanner
+    //Sync with the moodstocks database and load the images in that database into our scanner
     self.firebaseDB = [[Firebase alloc] initWithUrl:@"https://usc-rossier-ar.firebaseio.com"];
     NSString *path = [MSScanner cachesPathFor:@"scanner.db"];
     _scanner = [[MSScanner alloc] init];
     [_scanner openWithPath:path key:MS_API_KEY secret:MS_API_SECRET error:nil];
     
+    //Set completion block for when the sync finishes
     void (^completionBlock)(MSSync *, NSError *) = ^(MSSync *op, NSError *error) {
         if (error)
             NSLog(@"Sync failed with error: %@", [error ms_message]);
@@ -60,54 +69,36 @@ NSString * const kToken = @"token";
     NSString * documentsDirectory = [paths objectAtIndex:0];
     NSLog(@"%@", documentsDirectory);
     self.tokenFilePath = [documentsDirectory stringByAppendingPathComponent:@"Token.plist"];
-    self.cacheFilePath = [documentsDirectory stringByAppendingString:@"Cache.plist"];
+    self.cacheFilePath = [NSString stringWithString:[documentsDirectory stringByAppendingPathComponent:@"Cache.plist"]];
     self.info = [NSMutableArray arrayWithContentsOfFile:self.tokenFilePath];
-    
-    
-    self.isLoggedIn = false;
     
     //check to see if a token exists, try to authenticate it if it does
     if(self.info && self.info.count == 1) {
         [self.firebaseDB authWithCustomToken:[self.info[0] valueForKey:kToken] withCompletionBlock:^(NSError *error, FAuthData *authData) {
+            
+            NSString * storyboardID;
             if (error) {
-                
+                storyboardID = @"loginVC";
                 NSLog(@"Login Failed, sending user to the loginVC! %@", error);
-                NSString *storyboardId = self.isLoggedIn ? @"mainVC" : @"loginVC";
-                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                 
-                self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-                
-                
-                UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:storyboardId];
-                self.window.rootViewController = initViewController;
-                [self.window makeKeyAndVisible];
             } else {
-                
+                storyboardID = @"mainVC";
                 NSLog(@"Login succeeded, sending the user straight to the mainVC! %@", authData);
-                
-                self.isLoggedIn = true;
-                NSString *storyboardId = self.isLoggedIn ? @"mainVC" : @"loginVC";
-                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                
-                self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-                
-                
-                UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:storyboardId];
-                self.window.rootViewController = initViewController;
-                [self.window makeKeyAndVisible];
             }
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+            UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:storyboardID];
+            self.window.rootViewController = initViewController;
+            [self.window makeKeyAndVisible];
         }];
     }
     else {
         
         NSLog(@"There was no token found for this user");
-        NSString *storyboardId = self.isLoggedIn ? @"mainVC" : @"loginVC";
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        
-        
-        UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:storyboardId];
+        UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginVC"];
         self.window.rootViewController = initViewController;
         [self.window makeKeyAndVisible];
     }
@@ -135,12 +126,9 @@ NSString * const kToken = @"token";
     else {
         //make the user login again if their token expired while the app was backgrounded
         NSLog(@"The token has expired, must login again");
-        BOOL isLoggedIn = false;
-        NSString *storyboardId = isLoggedIn ? @"mainVC" : @"loginVC";
-        
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:storyboardId];
+        UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginVC"];
         self.window.rootViewController = initViewController;
         [self.window makeKeyAndVisible];
     }

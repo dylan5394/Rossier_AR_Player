@@ -11,6 +11,8 @@
 #import "UserSettingsViewController.h"
 
 @interface UserSettingsViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
 @end
 
@@ -33,7 +35,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)changePassword {
+-(IBAction)changePassword:(id)sender {
     
     [_firebaseDB changePasswordForUser:[_temp.keychain valueForKey:(id)kSecAttrAccount] fromOld:[_temp.keychain valueForKey:(id)kSecValueData]
                          toNew:@"batteryhorsestaplecorrect" withCompletionBlock:^(NSError *error) {
@@ -45,26 +47,17 @@
                          }];
 }
 
--(void)logOutUser {
+-(IBAction)logOut:(id)sender {
     
+    
+    //Log the user out and send them to the login view controller
     [_firebaseDB unauth];
     
     AppDelegate * temp = [[UIApplication sharedApplication] delegate];
     temp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"loginVC"];
 }
 
--(void)sendPasswordReset {
-    
-    [_firebaseDB resetPasswordForUser:[_temp.keychain valueForKey:(id)kSecAttrAccount] withCompletionBlock:^(NSError *error) {
-        if (error) {
-            // There was an error processing the request
-        } else {
-            // Password reset sent successfully
-        }
-    }];
-}
-
--(void)deleteUser {
+-(IBAction)deleteUser:(id)sender {
     
     [_firebaseDB removeUser:[_temp.keychain valueForKey:(id)kSecAttrAccount] password:[_temp.keychain valueForKey:(id)kSecValueData]
 withCompletionBlock:^(NSError *error) {
